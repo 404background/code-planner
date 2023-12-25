@@ -1,0 +1,25 @@
+{
+  "name": "code-planner",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "setup": "npm install electron --save-dev",
+    "app": "electron ./electron/app.js",
+    "node-create": "python ./python/node_creater.py"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/404background/code-planner.git"
+  },
+  "author": "404background",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/404background/code-planner/issues"
+  },
+  "homepage": "https://github.com/404background/code-planner#readme",
+  "devDependencies": {
+    "electron": "^28.1.0"
+  }
+}

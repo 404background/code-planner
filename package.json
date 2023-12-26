@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "setup": "npm install electron --save-dev",
+    "setup": "npm install electron --save-dev && npm install zx",
     "app": "electron ./electron/app.js",
     "node-create": "python ./python/node_creater.py"
   },
@@ -14,12 +14,15 @@
     "url": "git+https://github.com/404background/code-planner.git"
   },
   "author": "404background",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/404background/code-planner/issues"
   },
   "homepage": "https://github.com/404background/code-planner#readme",
   "devDependencies": {
     "electron": "^28.1.0"
+  },
+  "dependencies": {
+    "zx": "^7.2.3"
   }
 }

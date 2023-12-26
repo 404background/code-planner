@@ -2,6 +2,7 @@
 node/
 node_modules/
 python/__pycache__/
+template/usr/
 
 # file
 package-lock.json

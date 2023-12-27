@@ -1,0 +1,8 @@
+{
+    "name" : "${folderName}",
+    "node-red" : {
+        "nodes": {
+            "${nodeName}": "${nodeName}.js"
+        }
+    }
+}

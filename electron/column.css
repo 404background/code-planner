@@ -1,0 +1,39 @@
+#column-main {
+    display: flex;
+}
+
+.column {
+    display: flex;
+    width: 100vw;
+    height: 80vh;
+    padding: 5px;
+}
+
+#select-column {
+    width: 30px;
+}
+
+.editor-embed {
+    background-color: white;
+    padding: 5px;
+}
+
+.export-embed {
+    background-color: white;
+    padding: 5px;
+}
+
+.select-icon {
+    width: 20px;
+	height: 20px;
+    padding: 0px 5px;
+}
+
+.select-icon:hover {
+    opacity: 0.5;
+    padding: 0px 5px;
+}
+
+.column-embed {
+
+}

@@ -1,39 +1,33 @@
 <!DOCTYPE html>
-<html>
-<link rel="stylesheet" type="text/css" href="./column.css">
-<div id = "column-main">
-  <div id="select-column">
-    <img class="select-icon" src="./images/house-solid.svg"/>
-    <img class="select-icon" src="./images/magnifying-glass-solid.svg"/>
-    <img class="select-icon" src="./images/cube-solid.svg"/>
-    <img class="select-icon" src="./images/microchip-solid.svg"/>
-    <img class="select-icon" src="./images/share-nodes-solid.svg"/>
-    <img class="select-icon" src="./images/html5.svg"/>
-    <img class="select-icon" src="./images/brain-solid.svg"/>
-    <img class="select-icon" src="./images/gear-solid.svg"/>
-  </div>
-  <div class="column">
-    <iframe src="./node-create.html" class="column-embed" id="editor-embed"></iframe>
-  </div>
-  <div class="column">
-    <iframe src="./node-export.html" class="column-embed" id="export-embed"></iframe>
-  </div>
-</div>
+<html id="window">
 <link rel="stylesheet" type="text/css" href="./styles.css">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+<meta name="viewport" contnt="width=device-width, height=device-height">
+
+<body id="container">
+  <link rel="stylesheet" type="text/css" href="./column.css">
+  <div id="icon-column">
+    <script src="column.js"></script>
+    <img class="select-icon" id="home-icon" src="./images/house-solid.svg" onclick="iconHome()"/>
+    <img class="select-icon" id="search-icon" src="./images/magnifying-glass-solid.svg" onclick="iconSearch()"/>
+    <img class="select-icon" id="stl-icon" src="./images/cube-solid.svg" onclick="iconStl()"/>
+    <img class="select-icon" id="ino-icon" src="./images/microchip-solid.svg" onclick="iconIno()"/>
+    <img class="select-icon" id="node-icon" src="./images/share-nodes-solid.svg" onclick="iconNode()"/>
+    <img class="select-icon" id="html-icon" src="./images/html5.svg" onclick="iconHtml()"/>
+    <img class="select-icon" id="brain-icon" src="./images/brain-solid.svg" onclick="iconBrain()"/>
+    <img class="select-icon" id="setting-icon" src="./images/gear-solid.svg" onclick="iconSetting()"/>
+  </div>
+
+  <div id="work-column">
+    <iframe src="./plugin/home/home.html" id="work-iframe"></iframe>
+  </div>
+    
 
 
-<head>
-    <meta charset="UTF-8">
-    <title>Code Planner</title>
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
-</head>
-
-<body>
-  <p>Current theme source: <strong id="theme-source">System</strong></p>
-
-  <button id="toggle-dark-mode">Toggle Dark Mode</button>
-  <button id="reset-to-system">Reset to System Theme</button>
-
-  <script src="renderer.js"></script>
+  <div id="footer">
+    <small><a href="https://github.com/404background/code-planner">https://github.com/404background/code-planner</a></small>
+  </div>
+  
 </body>
 </html>

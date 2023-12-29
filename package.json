@@ -7,8 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "setup": "npm install electron --save-dev && npm install zx",
     "app": "electron ./electron/app.js",
-    "node-creater": "python ./python/node_creater.py",
-    "stl-creater": "python ./python/stl_creater.py",
+    "node-test": "python ./python/node_test.py",
+    "stl-test": "python ./python/stl_test.py",
     "arduino-creater": "python ./python/arduino_creater.py"
   },
   "repository": {

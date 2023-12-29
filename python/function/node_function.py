@@ -1,3 +1,4 @@
+import os
 from string import Template
 
 class NodeCreater:
@@ -14,6 +15,7 @@ class NodeCreater:
     
     
     def set(self, folderName, nodeName):
+        os.mkdir('user/create/node/' + folderName)
         self.folderName = folderName
         self.nodeName = nodeName
         self.fileName = nodeName
@@ -23,7 +25,7 @@ class NodeCreater:
         print(vars(self))
     
     def _add_name_folder(self, name):
-        return './node/' + self.folderName + '/' + name
+        return './user/create/node/' + self.folderName + '/' + name
     
     def _add_name_template(self, name):
         return './template/node/' + name

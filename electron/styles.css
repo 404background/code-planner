@@ -1,12 +1,61 @@
 :root {
-    color-scheme: light dark;
-  }
-  
-  @media (prefers-color-scheme: dark) {
-    body { background: #333; color: white; }
-    img { background-color: white; }
-  }
-  
-  @media (prefers-color-scheme: light) {
-    body { background: #ddd; color: black; }
-  }
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  body { background: #333; color: white; }
+  img { background-color: white; }
+}
+
+@media (prefers-color-scheme: light) {
+  body { background: #ddd; color: black; }
+}
+
+.web-view {
+  width: 800px;
+  height: 600px;
+}
+
+#container {
+  width: 98vw;
+  height: 98vh;
+  display: grid;
+  grid-template-columns: 30px auto;
+  grid-template-rows: auto;
+  grid-column-gap: 5px;
+  grid-row-gap: 5px;
+}
+
+#icon-column {
+  grid-area: 1 / 1 / 2 / 2;
+}
+
+#work-column {
+  grid-area: 1 / 2 / 2 / 3;
+  width: 97vw;
+  height: 95vh;
+}
+
+#work-iframe {
+  width: 100%;
+  height: 100%;
+}
+
+#footer {
+  grid-area: 2 / 1 / 3 / 3;
+  align-self: end;
+  justify-self: end;
+  padding: 3px;
+  position:fixed;
+}
+
+.select-icon {
+  width: 20px;
+height: 20px;
+  padding: 0px 5px 0px 0px;
+}
+
+.select-icon:hover {
+  opacity: 0.5;
+  padding: 0px 0px 0px 5px;
+}

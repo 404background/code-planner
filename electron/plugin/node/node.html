@@ -3,15 +3,16 @@
     <script src="node.js"></script>
     <div id="editor">
         <label for="folder-name">Folder Name:</label>
-        <input type="text" name="FolderName" id="folder-name"><br>
+        <input type="text" name="FolderName" id="folder-name" class="node-input"><br>
         <label for="node-name">Node Name:</label>
-        <input type="text" name="NodeName" id="node-name"><br>
+        <input type="text" name="NodeName" id="node-name" class="node-input"><br>
         <label for="mcu-select">for MCU?</label>
-        <input type="checkbox" name="MCU" id="mcu-select"><br>
+        <input type="checkbox" name="MCU" id="mcu-select" class="node-input"><br>
+
         <input type="submit" name="Create" id="node-create" value="Create" onclick="nodeCreate()"><br>
     </div>
-
     <div id="export">
         <h1>Export</h1>
+        <textarea></textarea>
     </div>
 </div>

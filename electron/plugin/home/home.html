@@ -1,9 +1,14 @@
-<link rel="stylesheet" type="text/css" href="./home.css">
+<link rel="stylesheet" type="text/css" href="./styles.css">
+<script src="./renderer.js"></script>
 <div id="home-container">
     <h1>Welcome!</h1>
     <h2>release</h2>
-    <script src="../../renderer.js"></script>
-    <p>Current theme source: <strong id="theme-source">System</strong></p>
-    <button id="toggle-dark-mode" onclick="buttonDarkMode()">Toggle Dark Mode</button>
-    <button id="reset-to-system" onclick="buttonSystemTheme()">Reset to System Theme</button>
+    <button onclick="buttonDarkMode()">Display Mode</button>
+    
+    <small><a href="https://github.com/404background/code-planner">https://github.com/404background/code-planner</a></small>
+    
+    <button class="file-open">Open</button>
+    <button class="file-save">Save</button>
+    <textarea class="text-area"></textarea>
+    <script src="./renderer.js"></script>
 </div>

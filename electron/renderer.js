@@ -1,9 +1,10 @@
-document.getElementById('toggle-dark-mode').addEventListener('click', async () => {
-    const isDarkMode = await window.darkMode.toggle()
-    document.getElementById('theme-source').innerHTML = isDarkMode ? 'Dark' : 'Light'
-  })
-  
-  document.getElementById('reset-to-system').addEventListener('click', async () => {
-    await window.darkMode.system()
-    document.getElementById('theme-source').innerHTML = 'System'
-  })
+window.myApi.setup()
+window.myApi.iconDisplay()
+
+function buttonDarkMode() {
+  window.darkMode.toggle()
+}
+
+function buttonSystemTheme() {
+  window.darkMode.system()
+}

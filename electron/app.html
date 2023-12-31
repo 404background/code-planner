@@ -4,30 +4,28 @@
 <meta charset="UTF-8">
 <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
 <meta name="viewport" contnt="width=device-width, height=device-height">
-
 <body id="container">
-  <link rel="stylesheet" type="text/css" href="./column.css">
   <div id="icon-column">
-    <script src="column.js"></script>
-    <img class="select-icon" id="home-icon" src="./images/house-solid.svg" onclick="iconHome()"/>
-    <img class="select-icon" id="search-icon" src="./images/magnifying-glass-solid.svg" onclick="iconSearch()"/>
-    <img class="select-icon" id="stl-icon" src="./images/cube-solid.svg" onclick="iconStl()"/>
-    <img class="select-icon" id="ino-icon" src="./images/microchip-solid.svg" onclick="iconIno()"/>
-    <img class="select-icon" id="node-icon" src="./images/share-nodes-solid.svg" onclick="iconNode()"/>
-    <img class="select-icon" id="html-icon" src="./images/html5.svg" onclick="iconHtml()"/>
-    <img class="select-icon" id="brain-icon" src="./images/brain-solid.svg" onclick="iconBrain()"/>
-    <img class="select-icon" id="setting-icon" src="./images/gear-solid.svg" onclick="iconSetting()"/>
+    <script src="./renderer.js"></script>
   </div>
 
   <div id="work-column">
-    <iframe src="./plugin/home/home.html" id="work-iframe"></iframe>
-  </div>
-    
-
-
-  <div id="footer">
-    <small><a href="https://github.com/404background/code-planner">https://github.com/404background/code-planner</a></small>
+    <script src="./plugin/home/home.js" onload="iconHome()"></script>
   </div>
   
+  <div id="footer">
+    <small><a href="https://github.com/404background/code-planner">https://github.com/404background/code-planner</a></small>
+    
+    <button class='file-open'>Open</button>
+    <button class='file-save'>Save</button>
+    <textarea class='text-area'></textarea>
+    
+    <div class="theme-source">
+      <button class="toggle-dark-mode" onclick="buttonDarkMode()">Toggle Dark Mode</button>
+      <button class="reset-to-system" onclick="buttonSystemTheme()">Reset to System Theme</button>
+      
+    </div>
+  </div>
+  <script src="./renderer.js"></script>
 </body>
 </html>

@@ -1,4 +1,5 @@
 const { ipcMain, dialog } = require('electron')
+const fs = require('fs')
 
 let fileOpen = ipcMain.handle('file-open', async (event) => {
     const { canceled, filePaths } = await dialog.showOpenDialog({

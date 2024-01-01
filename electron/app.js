@@ -16,7 +16,6 @@ function createWindow () {
     height: height,
     minWidth: 600,
     minHeight: 400,
-    useContentSize: true,
     title: 'Code Planner',
     titleBarOverlay: true,
     webPreferences: {

@@ -3,8 +3,9 @@ function iconNode() {
     while(workColumn.firstChild) {
       workColumn.removeChild(workColumn.firstChild)
     }
-    let iframe = document.createElement('iframe')
-    iframe.setAttribute('src', './plugin/node/node.html')
-    iframe.setAttribute('id', 'work-iframe')
-    workColumn.appendChild(iframe)
-}
+
+    let webview = document.createElement('webview')
+    webview.setAttribute('id', 'node-red')
+    webview.setAttribute('src', 'http://localhost:8000/red')
+    workColumn.appendChild(webview)
+  }

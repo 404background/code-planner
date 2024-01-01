@@ -1,18 +1,4 @@
-#work-area {
-    display: grid;
-    grid-template-columns: repeat(2, auto);
-    grid-template-rows: auto;
-    grid-column-gap: 5px;
-    grid-row-gap: 5px;
-}
-
-#editor {
-    grid-area: 1 / 1 / 2 / 2;
-    padding: 5px;
-}
-
-#export {
-    grid-area: 1 / 2 / 2 / 3;
-    background-color: white;
-    padding: 5px;
+#node-red {
+    width: 95vw;
+    height: 95vh;
 }

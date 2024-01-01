@@ -1,0 +1,29 @@
+<link rel="stylesheet" type="text/css" href="./styles.css">
+<link rel="stylesheet" type="text/css" href="./library.css">
+<div id="node-work-area">
+    <script src="library.js">editorInput()</script>
+    <div id="node-editor">
+        <label for="folder-name">Folder Name:</label><br>
+        <input type="text" name="FolderName" id="folder-name" class="node-input"><br>
+        <label for="node-name">Node Name:</label><br>
+        <input type="text" name="NodeName" id="node-name" class="node-input"><br>
+        <label for="node-name">category:</label><br>
+        <input type="text" id="node-name" class="node-category"><br>
+        <label for="node-name">color:</label><br>
+        <input type="color"id="node-name" class="node-color"><br>
+        <label for="node-name">icon:</label><br>
+        <input type="text" id="node-icon" class="node-input"><br>
+        <label for="node-name">input:</label><br>
+        <input type="number" id="node-input" class="node-input" value="1"><br>
+        <label for="node-name">output:</label><br>
+        <input type="number" id="node-output" class="node-input" value="1"><br>
+        <label for="mcu-select">for MCU?</label><br>
+        <input type="checkbox" name="MCU" id="mcu-select" class="node-input"><br>
+
+        <input type="submit" name="Create" id="node-create" value="Create" onclick="nodeCreate()"><br>
+    </div>
+    <div id="node-export">
+        <h1>Export</h1>
+        <textarea id="export-text"></textarea>
+    </div>
+</div>

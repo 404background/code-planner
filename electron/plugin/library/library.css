@@ -1,0 +1,22 @@
+#node-work-area {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: auto;
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
+}
+
+#node-editor {
+    grid-area: 1 / 1 / 2 / 2;
+    padding: 5px;
+}
+
+#node-export {
+    grid-area: 1 / 2 / 2 / 3;
+    padding: 5px;
+}
+
+#node-export-text {
+    width: 100%;
+    height: 100%;
+}

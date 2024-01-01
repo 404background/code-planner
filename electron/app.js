@@ -1,8 +1,9 @@
-const { app, BrowserWindow, Menu, screen, shell, ipcMain, dialog } = require('electron')
+const { app, BrowserWindow, Menu, screen, shell } = require('electron')
 const path = require('path')
 const fs = require('fs')
 const menuTemplate = require('./menu.js')
 let darkMode  = require('./plugin/setting/dark_mode.js')
+let os = require('./os.js')
 
 function createWindow () {
   const menu = Menu.buildFromTemplate(menuTemplate)
@@ -38,35 +39,6 @@ function createWindow () {
 
   win.loadFile('./app.html')
 }
-
-// async function pluginList() {
-//   const pluginListPath = path.join(__dirname, 'plugin_list.json');
-//   const pluginList = JSON.parse(fs.readFileSync(pluginListPath, 'utf-8', (err, data) => {
-//     if (err) throw err;
-//     console.log(data)
-//   }))
-//   console.log(pluginList)
-//   return pluginList
-// }
-
-ipcMain.handle('file-open', async (event) => {
-  const { canceled, filePaths } = await dialog.showOpenDialog({
-      filters: [{ name: 'Documents', extensions: ['txt'] }],
-  })
-  if (canceled) return { canceled, data: [] }
-  const data = filePaths.map((filePath) =>
-      fs.readFileSync(filePath, { encoding: 'utf8' })
-  )
-  return { canceled, data }
-})
-
-ipcMain.handle('file-save', async (event, data) => {
-  const { canceled, filePath } = await dialog.showSaveDialog({
-      filters: [{ name: 'Documents', extensions: ['txt'] }],
-  })
-  if (canceled) { return }
-  fs.writeFileSync(filePath, data)
-})
 
 app.whenReady().then(() => {
   // ipcMain.handle('plugin-list', pluginList)

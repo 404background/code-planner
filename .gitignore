@@ -1,0 +1,9 @@
+# folder
+node_modules/
+**/__pycache__/
+template/user/
+python/test/
+user/create/
+
+# file
+package-lock.json

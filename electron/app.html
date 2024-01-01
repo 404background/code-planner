@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html id="window">
+<link rel="stylesheet" type="text/css" href="./styles.css">
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+<meta name="viewport" contnt="width=device-width, height=device-height">
+<body id="container">
+  <div id="icon-column">
+    <script src="./renderer.js"></script>
+  </div>
+
+  <div id="work-column">
+    <script src="./plugin/home/home.js" onload="iconHome()"></script>
+  </div>
+  
+  <div id="footer">
+    <small><a href="https://github.com/404background/code-planner">https://github.com/404background/code-planner</a></small>
+    
+    <button class='file-open'>Open</button>
+    <button class='file-save'>Save</button>
+    <textarea class='text-area'></textarea>
+    </div>
+  </div>
+  <script src="./renderer.js"></script>
+</body>
+</html>

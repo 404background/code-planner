@@ -1,0 +1,10 @@
+{
+	"modules": {
+		"*": [
+			"./${nodeName}"
+		]
+	},
+	"preload": [
+		"${nodeName}"
+	]
+}

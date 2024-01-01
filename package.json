@@ -1,0 +1,33 @@
+{
+  "name": "code-planner",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "setup": "npm install electron --save-dev && npm install express && npm install node-red",
+    "app": "electron ./electron/app.js",
+    "node-test": "python ./python/node_test.py",
+    "stl-test": "python ./python/stl_test.py",
+    "plugin-test": "python ./python/plugin_test.py",
+    "arduino-creater": "python ./python/arduino_creater.py",
+    "node-red": "node ./express/node-red.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/404background/code-planner.git"
+  },
+  "author": "404background",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/404background/code-planner/issues"
+  },
+  "homepage": "https://github.com/404background/code-planner#readme",
+  "devDependencies": {
+    "electron": "^28.1.0"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "node-red": "^3.1.3"
+  }
+}

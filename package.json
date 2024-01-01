@@ -5,11 +5,13 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "setup": "npm install electron --save-dev && npm install zx",
+    "setup": "npm install electron --save-dev && npm install express && npm install node-red",
     "app": "electron ./electron/app.js",
     "node-test": "python ./python/node_test.py",
     "stl-test": "python ./python/stl_test.py",
-    "arduino-creater": "python ./python/arduino_creater.py"
+    "plugin-test": "python ./python/plugin_test.py",
+    "arduino-creater": "python ./python/arduino_creater.py",
+    "node-red": "node ./express/node-red.js"
   },
   "repository": {
     "type": "git",
@@ -25,6 +27,7 @@
     "electron": "^28.1.0"
   },
   "dependencies": {
-    "zx": "^7.2.3"
+    "express": "^4.18.2",
+    "node-red": "^3.1.3"
   }
 }

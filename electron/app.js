@@ -1,7 +1,8 @@
-const { app, BrowserWindow, Menu, screen, shell, ipcMain, dialog, nativeTheme } = require('electron')
+const { app, BrowserWindow, Menu, screen, shell, ipcMain, dialog } = require('electron')
 const path = require('path')
 const fs = require('fs')
 const menuTemplate = require('./menu.js')
+let darkMode  = require('./plugin/setting/dark_mode.js')
 
 function createWindow () {
   const menu = Menu.buildFromTemplate(menuTemplate)
@@ -47,19 +48,6 @@ function createWindow () {
 //   console.log(pluginList)
 //   return pluginList
 // }
-
-ipcMain.handle('dark-mode:toggle', () => {
-  if (nativeTheme.shouldUseDarkColors) {
-    nativeTheme.themeSource = 'light'
-  } else {
-    nativeTheme.themeSource = 'dark'
-  }
-  return nativeTheme.shouldUseDarkColors
-})
-
-ipcMain.handle('dark-mode:system', () => {
-  nativeTheme.themeSource = 'system'
-})
 
 ipcMain.handle('file-open', async (event) => {
   const { canceled, filePaths } = await dialog.showOpenDialog({

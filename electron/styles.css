@@ -4,7 +4,7 @@
 
 @media (prefers-color-scheme: dark) {
   body { background: #333; color: white; }
-  img { background-color: white; }
+  img { filter: invert(50%); }
 }
 
 @media (prefers-color-scheme: light) {
@@ -51,7 +51,7 @@
 
 .select-icon {
   width: 20px;
-height: 20px;
+  height: 20px;
   padding: 0px 5px 0px 0px;
 }
 

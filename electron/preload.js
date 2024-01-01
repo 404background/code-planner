@@ -6,9 +6,9 @@ const iconList = {
   "stl":  "./images/cube-solid.svg",
   "ino": "./images/microchip-solid.svg",
   "node": "./images/share-nodes-solid.svg",
-  "html": "./images/html5.svg",
+  "library": "./images/book-solid.svg",
   "brain": "./images/brain-solid.svg",
-  "setting": "./images/gear-solid.svg"
+  "setting": "./images/gear-solid.svg",
 }
 
 contextBridge.exposeInMainWorld('myApi', {
@@ -37,11 +37,16 @@ contextBridge.exposeInMainWorld('myApi', {
         let iconLoad = document.createElement("script")
         iconLoad.setAttribute("src", `./plugin/${i}/${i}.js`)
         iconColumn.appendChild(iconLoad)
+
+        let cssLoad = document.createElement("link")
+        cssLoad.setAttribute('rel', 'stylesheet')
+        cssLoad.setAttribute('type', 'text/css')
+        cssLoad.setAttribute('href', `./plugin/${i}/${i}.css`)
+        iconColumn.appendChild(cssLoad)
     }
   },
 })
 
 contextBridge.exposeInMainWorld('darkMode', {
   toggle: () => ipcRenderer.invoke('dark-mode:toggle'),
-  system: () => ipcRenderer.invoke('dark-mode:system')
 })

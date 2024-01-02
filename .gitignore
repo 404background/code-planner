@@ -4,6 +4,8 @@ node_modules/
 template/user/
 python/test/
 user/create/
+moddable/
+esp32/*
 
 # file
 package-lock.json

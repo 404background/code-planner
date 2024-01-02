@@ -3,7 +3,9 @@
 1. Node.jsをインストールしてください。
 2. npm run setupを実行してください。
 
-Node-REDを利用する場合は、別のターミナルでnpm run node-redを実行してください。
+Node-REDを利用する場合は、npm run node-redを実行してください。  
+Jupyter Labを利用する場合は、npm run win-jupyterを実行してください。  
+(Windows環境のみ動作確認、Python環境が必要)  
 
 ## デスクトップアプリケーションの実行
 
@@ -14,21 +16,11 @@ npm run appを実行してください。
 Node-RED用のノードを作成するためのプログラムです。  
 必要なファイルを生成します。  
 
-## Electron
+## Windowsの場合
 
-インストール  
-<https://www.electronjs.org/ja/docs/latest/tutorial/quick-start>
+### Jupyter Lab
 
-## Express
-
-インストール  
-<https://expressjs.com/ja/starter/installing.html>
-
-## Node-RED
-
-Expressアプリケーションへの組み込み  
-<https://nodered.jp/docs/user-guide/runtime/embedding>
-
-## Font Awesome
-
-<https://fontawesome.com/>
+npm run win-jupyterを実行すると起動します。  
+アプリ内でログインが必要な場合は、tokenを入力してください。  
+CLIに表示されるURLのクエリに含まれます。  
+例：http://localhost:8888/lab?token=...  

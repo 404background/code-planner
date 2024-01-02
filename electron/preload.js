@@ -2,13 +2,14 @@ const { contextBridge, ipcRenderer } = require('electron')
 
 const iconList = {
   "home": "./images/house-solid.svg",
-  "search": "./images/magnifying-glass-solid.svg",
-  "stl":  "./images/cube-solid.svg",
-  "ino": "./images/microchip-solid.svg",
+  // "search": "./images/magnifying-glass-solid.svg",
+  // "stl":  "./images/cube-solid.svg",
+  // "ino": "./images/microchip-solid.svg",
   "node": "./images/share-nodes-solid.svg",
+  "python": "./images/python.svg",
   "library": "./images/book-solid.svg",
-  "brain": "./images/brain-solid.svg",
-  "setting": "./images/gear-solid.svg",
+  // "brain": "./images/brain-solid.svg",
+  // "setting": "./images/gear-solid.svg",
 }
 
 contextBridge.exposeInMainWorld('myApi', {

@@ -5,13 +5,18 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "setup": "npm install electron --save-dev && npm install express && npm install node-red",
+    "setup": "npm install electron --save-dev && npm install express && npm install node-red && python -m venv jupyter",
+    "win-cmd": "%comspec% /k \"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\\\VC\\Auxiliary\\Build\\vcvars32.bat\"",
+    "win-mcu-setup": "start /d windows mcu-setup.bat",
+    "win-mcu-build": "start /d windows mcu-build.bat",
+    "win-mcu-hello": "start /d windows mcu-hello.bat",
     "app": "electron ./electron/app.js",
     "node-test": "python ./python/node_test.py",
     "stl-test": "python ./python/stl_test.py",
     "plugin-test": "python ./python/plugin_test.py",
     "arduino-creater": "python ./python/arduino_creater.py",
-    "node-red": "node ./express/node-red.js"
+    "node-red": "start node ./node-red.js",
+    "win-jupyter": "start /d windows jupyter-lab.bat"
   },
   "repository": {
     "type": "git",
@@ -27,7 +32,10 @@
     "electron": "^28.1.0"
   },
   "dependencies": {
+    "@moddable-node-red/mcu": "^1.0.4",
+    "@ralphwetzel/node-red-mcu-plugin": "^1.4.1-beta.1",
     "express": "^4.18.2",
-    "node-red": "^3.1.3"
+    "node-red": "^3.1.3",
+    "node-red-dashboard": "^3.6.2"
   }
 }

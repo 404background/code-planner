@@ -5,8 +5,8 @@ template/user/
 python/test/
 user/create/
 moddable/
-esp32/*
-jupyter/
+Espressif/
 
 # file
 package-lock.json
+.bash_history

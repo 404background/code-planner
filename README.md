@@ -20,6 +20,13 @@ Node-RED用のノードを作成するためのプログラムです。
 
 ### Node-RED MCUの環境構築
 
+#### 環境変数
+
+検索欄から「環境変数を編集」から設定してください。  
+IDF_PATH => C:\Espressif\frameworks\esp-idf-v5.1.2  
+IDF_TOOLS_PATH => C:\Espressif  
+MODDABLE => C:\pjt\moddable  
+
 #### Moddable
 
 npm runコマンドを実行する前に、npm run win-cmdを実行してください。  

@@ -20,10 +20,18 @@ Node-RED用のノードを作成するためのプログラムです。
 
 ### Node-RED MCUの環境構築
 
+#### Moddable
+
 npm runコマンドを実行する前に、npm run win-cmdを実行してください。  
 Visual Studio 2022のx86コマンドプロンプトが起動します。  
 npm run win-mcu-setupでmoddableのビルドが行われます。  
 npm run win-helloでhello worldサンプルが実行されます。  
+
+#### ESP-IDF
+
+動作確認環境：esp-idf-v5.1.1  
+code-plannerの内部ではなく、Cドライブ直下に構築します。  
+バージョンが異なる場合は、windows/mcu-setup.batのバージョンを変更してください。  
 
 ### Jupyter Lab
 

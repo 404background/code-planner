@@ -38,7 +38,7 @@ code-plannerの内部ではなく、Cドライブ直下に構築します。
 
 #### Moddable
 
-!!! npm runコマンドを実行する前に、npm run win-cmdを実行してください。 !!!  
+!!! npm runコマンドを実行する前に、npm run win-cmdを実行してください !!!  
 Visual Studio 2022のx86コマンドプロンプトが起動します。  
 npm run win-mcu-setupでmoddableのビルドが行われます。  
 npm run win-helloでhello worldサンプルが実行されます。  

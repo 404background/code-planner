@@ -1,5 +1,5 @@
 call cd ..
-call npm install @ralphwetzel/node-red-mcu-plugin --save-dev
+call npm install https://github.com/ralphwetzel/node-red-mcu-plugin
 call npm install @moddable-node-red/mcu --save-dev
 call npm install node-red-dashboard --save-dev
 @REM setup Moddable

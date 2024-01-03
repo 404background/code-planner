@@ -8,7 +8,6 @@
     "setup": "npm install electron --save-dev && npm install express && npm install node-red && python -m venv jupyter",
     "win-cmd": "%comspec% /k \"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\\\VC\\Auxiliary\\Build\\vcvars32.bat\"",
     "win-mcu-setup": "start /d windows mcu-setup.bat",
-    "win-mcu-build": "start /d windows mcu-build.bat",
     "win-mcu-hello": "start /d windows mcu-hello.bat",
     "app": "electron ./electron/app.js",
     "node-test": "python ./python/node_test.py",
@@ -29,13 +28,13 @@
   },
   "homepage": "https://github.com/404background/code-planner#readme",
   "devDependencies": {
-    "electron": "^28.1.0"
-  },
-  "dependencies": {
     "@moddable-node-red/mcu": "^1.0.4",
     "@ralphwetzel/node-red-mcu-plugin": "^1.4.1-beta.1",
-    "express": "^4.18.2",
-    "node-red": "^3.1.3",
+    "electron": "^28.1.0",
     "node-red-dashboard": "^3.6.2"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "node-red": "^3.1.3"
   }
 }

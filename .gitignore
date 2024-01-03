@@ -10,3 +10,4 @@ jupyter/
 
 # file
 package-lock.json
+.bash_history

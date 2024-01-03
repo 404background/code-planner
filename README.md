@@ -18,6 +18,13 @@ Node-RED用のノードを作成するためのプログラムです。
 
 ## Windowsの場合
 
+### Node-RED MCUの環境構築
+
+npm runコマンドを実行する前に、npm run win-cmdを実行してください。  
+Visual Studio 2022のx86コマンドプロンプトが起動します。  
+npm run win-mcu-setupでmoddableのビルドが行われます。  
+npm run win-helloでhello worldサンプルが実行されます。  
+
 ### Jupyter Lab
 
 npm run win-jupyterを実行すると起動します。  

@@ -20,9 +20,14 @@ Node-RED用のノードを作成するためのプログラムです。
 
 ### Node-RED MCUの環境構築
 
+**!!! 関連ファイルを一度削除しないと動作しない場合があります !!! ** 
+- C:\homeフォルダ : Node-REDのフローが保存されています
+- C:\Espressif : frameworksのバージョンが異なる場合は一度削除してください
+- C:\pjt\moddable : Moddableの環境が構築されます
+
 #### 環境変数
 
-検索欄から「環境変数を編集」から設定してください。  
+検索欄の「環境変数を編集」から設定してください。  
 IDF_PATH => C:\Espressif\frameworks\esp-idf-v5.1.2  
 IDF_TOOLS_PATH => C:\Espressif  
 MODDABLE => C:\pjt\moddable  
@@ -38,7 +43,7 @@ code-plannerの内部ではなく、Cドライブ直下に構築します。
 
 #### Moddable
 
-!!! npm runコマンドを実行する前に、npm run win-cmdを実行してください !!!  
+**!!! npm runコマンドを実行する前に、npm run win-cmdを実行してください !!!  **
 Visual Studio 2022のx86コマンドプロンプトが起動します。  
 npm run win-mcu-setupでmoddableのビルドが行われます。  
 npm run win-helloでhello worldサンプルが実行されます。  

@@ -15,7 +15,9 @@
     "plugin-test": "python ./python/plugin_test.py",
     "arduino-creater": "python ./python/arduino_creater.py",
     "node-red": "start node ./node-red.js",
-    "win-jupyter": "start /d windows jupyter-lab.bat"
+    "win-jupyter": "start /d windows jupyter-lab.bat",
+    "stack-chan-setup": "git clone https://github.com/meganetaaan/stack-chan.git & cd stack-chan/firmware && npm i",
+    "stack-chan-build": "cd stack-chan/firmware && npm run build --target=esp32/m5stack_core2 && npm run deploy --target=esp32/m5stack_core2"
   },
   "repository": {
     "type": "git",

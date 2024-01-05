@@ -30,7 +30,7 @@
   "devDependencies": {
     "@moddable-node-red/mcu": "^1.0.4",
     "@ralphwetzel/node-red-mcu-plugin": "^1.4.1-beta.1",
-    "electron": "^28.1.0",
+    "electron": "^28.1.1",
     "node-red-dashboard": "^3.6.2"
   },
   "dependencies": {

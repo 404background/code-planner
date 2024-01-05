@@ -33,9 +33,9 @@ function createWindow () {
       shell.openExternal(url)
     }
   }
-  win.webContents.on('will-navigate', handleUrlOpen);
-  win.webContents.on('new-window', handleUrlOpen);
-
+  win.webContents.on('will-navigate', handleUrlOpen)
+  win.webContents.on('new-window', handleUrlOpen)
+  win.maximize()
   win.loadFile('./app.html')
 }
 

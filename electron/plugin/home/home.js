@@ -5,10 +5,14 @@ function iconHome() {
         workColumn.removeChild(workColumn.firstChild)
     }
 
+    let home = document.createElement('div')
+    home.setAttribute('id', 'home')
+    workColumn.appendChild(home)
+
     for(let i=1; i<5; i++) {
-        let div = document.createElement(`div${i}`)
+        let div = document.createElement('div')
         div.setAttribute("id", `div${i}`)
-        workColumn.appendChild(div)
+        home.appendChild(div)
     }
 
     let h1 = document.createElement('h1')

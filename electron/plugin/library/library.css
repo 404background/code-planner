@@ -1,22 +1,21 @@
-#node-work-area {
+#library {
     display: grid;
-    grid-template-columns: repeat(2, auto);
-    grid-template-rows: auto;
-    grid-column-gap: 5px;
-    grid-row-gap: 5px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 10px;
+    grid-row-gap: 0px;
+    width: 97vw;
+    height: 95vh;
 }
-
-#node-editor {
-    grid-area: 1 / 1 / 2 / 2;
-    padding: 5px;
-}
-
-#node-export {
-    grid-area: 1 / 2 / 2 / 3;
-    padding: 5px;
-}
-
-#node-export-text {
+    
+#node-editor { grid-area: 1 / 1 / 2 / 2; }
+#node-function { grid-area: 1 / 2 / 2 / 3;}
+#node-export { grid-area: 1 / 3 / 2 / 4; }
+#functionText {
     width: 100%;
-    height: 100%;
+    height: 100%
+}
+#exportText {
+    width: 100%;
+    height: 100%
 }

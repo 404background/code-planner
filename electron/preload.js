@@ -23,11 +23,6 @@ contextBridge.exposeInMainWorld('myApi', {
         const data =  document.querySelector('.text-area').value
         await ipcRenderer.invoke('file-save', data)
     })
-    document.querySelector('.open-external').addEventListener('click', async () => {
-      const data = document.querySelector('.open-external')
-      const url = data.innerHTML
-      await ipcRenderer.invoke('open-external', url)
-    })
   },
   // iconList: () => ipcRenderer.invoke('plugin-list'),
   iconDisplay: () => {
@@ -54,5 +49,10 @@ contextBridge.exposeInMainWorld('myApi', {
 })
 
 contextBridge.exposeInMainWorld('darkMode', {
-  toggle: () => ipcRenderer.invoke('dark-mode:toggle'),
+  toggle: () => ipcRenderer.invoke('dark-mode:toggle')
+})
+
+contextBridge.exposeInMainWorld('os', {
+  openExternal: () => ipcRenderer.invoke('open-external', url),
+  exec: (command) => ipcRenderer.invoke('exec-handle', command)
 })

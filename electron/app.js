@@ -2,20 +2,16 @@ const { app, BrowserWindow, Menu, screen, shell } = require('electron')
 const path = require('path')
 const fs = require('fs')
 const menuTemplate = require('./menu.js')
-let darkMode  = require('./plugin/setting/dark_mode.js')
 let os = require('./os.js')
 
 function createWindow () {
   const menu = Menu.buildFromTemplate(menuTemplate)
   Menu.setApplicationMenu(menu) 
   const primaryDisplay = screen.getPrimaryDisplay()
-  const { width, height } = primaryDisplay.workAreaSize
 
   const win = new BrowserWindow({
-    width: width,
-    height: height,
-    minWidth: 600,
-    minHeight: 400,
+    show: false,
+    backgroundColor: '#2e2c29',
     title: 'Code Planner',
     titleBarOverlay: true,
     webPreferences: {
@@ -35,6 +31,9 @@ function createWindow () {
   }
   win.webContents.on('will-navigate', handleUrlOpen)
   win.webContents.on('new-window', handleUrlOpen)
+  win.once('ready-to-show', () => {
+    win.show()
+  })
   win.maximize()
   win.loadFile('./app.html')
 }

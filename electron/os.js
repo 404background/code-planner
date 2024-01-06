@@ -1,5 +1,6 @@
-const { ipcMain, dialog, shell } = require('electron')
+const { ipcMain, dialog, nativeTheme, shell } = require('electron')
 const fs = require('fs')
+const child_process = require('child_process')
 
 let fileOpen = ipcMain.handle('file-open', async (event) => {
   const { canceled, filePaths } = await dialog.showOpenDialog({
@@ -24,4 +25,25 @@ let openExternal = ipcMain.handle('open-external', async (event, url) => {
   shell.openExternal(url)
 })
 
-module.exports = { fileOpen, fileSave, openExternal }
+let darkMode = ipcMain.handle('dark-mode:toggle', () => {
+  if (nativeTheme.shouldUseDarkColors) {
+    nativeTheme.themeSource = 'light'
+  } else {
+    nativeTheme.themeSource = 'dark'
+  }
+  return nativeTheme.shouldUseDarkColors
+})
+
+let execHandle = ipcMain.handle('exec-handle', async (event, command) => {
+  child_process.exec(command, (error, stdout, stderr) => {
+    if ( error instanceof Error) {
+        console.error(error);
+        console.log('exec Error *******');
+    } else {
+        console.log(stdout);
+        console.log('exec Success!');
+    }
+  })
+})
+
+module.exports = { fileOpen, fileSave, openExternal, darkMode, execHandle }

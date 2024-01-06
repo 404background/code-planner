@@ -2,24 +2,19 @@ import os
 from string import Template
 
 class NodeCreater:
-    def __init__(self):
-        self.fileName = ""
-        self.folderName = ""
-        self.nodeName = ""
-        self.functionName = ""
-        self.category = "examples"
-        self.color = "#ffffff"
-        self.inputs = "1"
-        self.outputs = "1"
-        self.icon = "file.svg"
-    
-    
-    def set(self, folderName, nodeName):
-        os.mkdir('user/create/node/' + folderName)
+    def __init__(self, folderName, nodeName, category="examples", color="#ffffff", inputs="1", outputs="1", icon="file.svg"):
+        directory = 'user/create/node/' + folderName
+        if not os.path.exists(directory):
+            os.mkdir(directory)
         self.folderName = folderName
         self.nodeName = nodeName
         self.fileName = nodeName
         self.functionName = nodeName[0].upper() + nodeName[1:]
+        self.category = category
+        self.color = color
+        self.inputs = inputs
+        self.outputs = outputs
+        self.icon = icon
     
     def debug(self):
         print(vars(self))

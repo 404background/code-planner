@@ -6,6 +6,7 @@ python/test/
 user/create/
 moddable/
 Espressif/
+jupyter/
 
 # file
 package-lock.json

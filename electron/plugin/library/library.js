@@ -104,6 +104,7 @@ function iconLibrary() {
 
   let nodeName = document.createElement("button")
   nodeName.setAttribute("id", 'buttonNodeName')
+  nodeName.setAttribute('onclick', 'buttonNodeName()')
   nodeName.innerHTML = 'Node List'
   nodeEditor.appendChild(nodeName)
   nodeEditor.appendChild(document.createElement('br'))
@@ -169,5 +170,5 @@ function buttonNodeName() {
 
 function nodeInstall() {
   const command = document.getElementById('nodeInstallText').value
-  window.os.exec('npm install ' + command)
+  window.os.exec('npm install ./user/create/node/' + command)
 }

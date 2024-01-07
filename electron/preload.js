@@ -54,5 +54,6 @@ contextBridge.exposeInMainWorld('darkMode', {
 
 contextBridge.exposeInMainWorld('os', {
   openExternal: () => ipcRenderer.invoke('open-external', url),
-  exec: (command) => ipcRenderer.invoke('exec-handle', command)
+  exec: (command) => ipcRenderer.invoke('exec-handle', command),
+  folderName: (path) => ipcRenderer.invoke('folder-name', path)
 })

@@ -21,6 +21,14 @@ let fileSave = ipcMain.handle('file-save', async (event, data) => {
   fs.writeFileSync(filePath, data)
 })
 
+let folderName = ipcMain.handle('folder-name', async(event, path) => {
+  const folderName = fs.promises.readdir(path)
+  for(i in folderName) {
+    console.log(i)
+  }
+  return folderName
+})
+
 let openExternal = ipcMain.handle('open-external', async (event, url) => {
   shell.openExternal(url)
 })
@@ -46,4 +54,4 @@ let execHandle = ipcMain.handle('exec-handle', async (event, command) => {
   })
 })
 
-module.exports = { fileOpen, fileSave, openExternal, darkMode, execHandle }
+module.exports = { fileOpen, fileSave, folderName, openExternal, darkMode, execHandle }

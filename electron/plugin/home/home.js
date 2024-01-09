@@ -5,10 +5,14 @@ function iconHome() {
         workColumn.removeChild(workColumn.firstChild)
     }
 
+    let home = document.createElement('div')
+    home.setAttribute('id', 'home')
+    workColumn.appendChild(home)
+
     for(let i=1; i<5; i++) {
-        let div = document.createElement(`div${i}`)
+        let div = document.createElement('div')
         div.setAttribute("id", `div${i}`)
-        workColumn.appendChild(div)
+        home.appendChild(div)
     }
 
     let h1 = document.createElement('h1')
@@ -21,10 +25,41 @@ function iconHome() {
     div1.appendChild(button)
     div1.appendChild(document.createElement('br'))
 
-    let label = document.createElement("label")
-    label.setAttribute("for", 'inputURL')
-    label.innerHTML = 'URL:'
-    div3.appendChild(label)
+    let commandLabel = document.createElement("label")
+    commandLabel.setAttribute("for", 'inputCommand')
+    commandLabel.innerHTML = 'Command:'
+    div2.appendChild(commandLabel)
+
+    let execInput = document.createElement("input")
+    execInput.setAttribute("type", 'text')
+    execInput.setAttribute("id", 'inputCommand')
+    div2.appendChild(execInput)
+
+    let execButton = document.createElement("button")
+    execButton.setAttribute("class", 'exec-handle')
+    execButton.setAttribute('onclick', 'buttonExec()')
+    execButton.innerHTML = 'Execute'
+    div2.appendChild(execButton)
+
+    const commandResister = {
+        "Node-RED": "npm run node-red",
+        "Jupyter Lab": "npm run win-jupyter",
+    }
+
+    let commandList = document.createElement('ul')
+    for(let i in commandResister) {
+        let command = document.createElement('li')
+        command.setAttribute('onclick', 'commandListClick(this)')
+        command.setAttribute('class', 'open-external')
+        command.innerHTML = commandResister[i]
+        commandList.appendChild(command)
+    }
+    div2.appendChild(commandList)
+
+    let urlLabel = document.createElement("label")
+    urlLabel.setAttribute("for", 'inputURL')
+    urlLabel.innerHTML = 'URL:'
+    div3.appendChild(urlLabel)
 
     let input = document.createElement("input")
     input.setAttribute("id", 'inputURL')
@@ -42,12 +77,13 @@ function iconHome() {
         "Google": "https://google.com",
         "ChatGPT": "https://chat.openai.com",
         "Node-RED": "http://localhost:8000/red",
+        "Node-RED UI": "http://localhost:8000/api/ui"
     }
 
     let urlList = document.createElement('ul')
     for(let i in urlResister) {
         let url = document.createElement('li')
-        url.setAttribute('onclick', 'listClick(this)')
+        url.setAttribute('onclick', 'urlListClick(this)')
         url.innerHTML = urlResister[i]
         urlList.appendChild(url)
     }
@@ -65,13 +101,26 @@ function buttonDarkMode() {
 }
 
 function buttonWebView() {
-    let homeURL = document.getElementById('inputURL')
-    let webview = document.getElementById('main-view')
+    const homeURL = document.getElementById('inputURL')
+    const webview = document.getElementById('main-view')
     webview.setAttribute('src', homeURL.value)
 }
 
-function listClick(element) {
-    let list = document.getElementById(element.id)
-    let webview = document.getElementById('main-view')
+function urlListClick(element) {
+    const webview = document.getElementById('main-view')
     webview.setAttribute('src', element.innerHTML)
+}
+
+function openExternal() {
+    const url = document.getElementById('open-external').innerHTML
+    window.os.openExternal()
+}
+
+function buttonExec() {
+    const command = document.getElementById('inputCommand').value
+    window.os.exec(command)
+}
+
+function commandListClick(element) {
+    window.os.exec(element.innerHTML)
 }

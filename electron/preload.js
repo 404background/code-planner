@@ -49,5 +49,11 @@ contextBridge.exposeInMainWorld('myApi', {
 })
 
 contextBridge.exposeInMainWorld('darkMode', {
-  toggle: () => ipcRenderer.invoke('dark-mode:toggle'),
+  toggle: () => ipcRenderer.invoke('dark-mode:toggle')
+})
+
+contextBridge.exposeInMainWorld('os', {
+  openExternal: () => ipcRenderer.invoke('open-external', url),
+  exec: (command) => ipcRenderer.invoke('exec-handle', command),
+  folderName: (path) => ipcRenderer.invoke('folder-name', path)
 })

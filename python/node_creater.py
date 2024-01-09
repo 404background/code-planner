@@ -1,13 +1,9 @@
+import sys
 import os
-import node_function as nf
+from function import node_function as nf
 
-creater = nf.NodeCreater()
+print(sys.argv)
 
-folderName = input('Folder name?:')
-os.mkdir('node/' + folderName)
-
-nodeName = input('Node name?:')
-
-creater.set(folderName, nodeName)
+creater = nf.NodeCreater(*sys.argv[1:])
 creater.debug()
 creater.createNode()

@@ -1,10 +1,10 @@
 from function import node_function as nf
 
-creater = nf.NodeCreater()
-
 folderName = input('Folder name?:')
 nodeName = input('Node name?:')
 
-creater.set(folderName, nodeName)
+#folderName, nodeName, category="examples", color="#ffffff"
+# inputs="1", outputs="1", icon="file.svg"
+creater = nf.NodeCreater(folderName, nodeName)
 creater.debug()
 creater.createNode()

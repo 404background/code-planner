@@ -2,24 +2,26 @@ import os
 from string import Template
 
 class NodeCreater:
-    def __init__(self):
-        self.fileName = ""
-        self.folderName = ""
-        self.nodeName = ""
-        self.functionName = ""
-        self.category = "examples"
-        self.color = "#ffffff"
-        self.inputs = "1"
-        self.outputs = "1"
-        self.icon = "file.svg"
-    
-    
-    def set(self, folderName, nodeName):
-        os.mkdir('user/create/node/' + folderName)
+    def __init__(self, folderName, nodeName, category="examples", 
+                 color="#ffffff", icon="file.svg", inputs="1", outputs="1", 
+                 mcu=False):
+        directory = 'user/create/node/' + folderName
+        if not os.path.exists(directory):
+            os.mkdir(directory)
         self.folderName = folderName
         self.nodeName = nodeName
         self.fileName = nodeName
         self.functionName = nodeName[0].upper() + nodeName[1:]
+        self.category = category
+        self.color = color
+        self.icon = icon
+        self.inputs = inputs
+        self.outputs = outputs
+        self.mcu = mcu
+        # f = open('./user/create/node/node-function.tmp', 'r')
+        # self.function = f.read()
+        # f.close()
+        self.function = ""
     
     def debug(self):
         print(vars(self))
@@ -36,7 +38,8 @@ class NodeCreater:
         template = f.read()
         template = Template(template)
         text = template.substitute(nodeName=self.nodeName, 
-                                   nodeNameFunction=self.functionName)
+                                   nodeNameFunction=self.functionName,
+                                   function=self.function)
         f.close()
         
         f = open(self._add_name_folder(self.fileName) + '.js', "w")
@@ -82,3 +85,5 @@ class NodeCreater:
         self.createJS()
         self.createHTML()
         self.createPackage()
+        if self.mcu == 'true':
+            self.createManifest()

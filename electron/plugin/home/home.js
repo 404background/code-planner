@@ -77,6 +77,7 @@ function iconHome() {
         "Google": "https://google.com",
         "ChatGPT": "https://chat.openai.com",
         "Node-RED": "http://localhost:8000/red",
+        "Node-RED UI": "http://localhost:8000/api/ui"
     }
 
     let urlList = document.createElement('ul')

@@ -1,46 +1,13 @@
-const inputList = {
-// id: [
-//   type,
-//   innerHTML,
-//   (default value)
-// ],
-  "folder-name": [
-    "text",
-    "Folder Name:"
-  ],
-  "node-name": [
-    "text",
-    "Node Name:"
-  ],
-  "node-category": [
-    "text",
-    "category:",
-    "examples"
-  ],
-  "node-color": [
-    "color",
-    "color:",
-    "#ffffff"
-  ],
-  "node-icon": [
-    "text",
-    "icon",
-    "file.svg"
-  ],
-  "node-input": [
-    "number",
-    "input",
-    "1"
-  ],
-  "node-output": [
-    "number",
-    "output",
-    "1"  
-  ],
-  "mcu-select": [
-    "checkbox",
-    "for MCU?"
-  ]
+const nodeInputList = {
+// id: [ type, innerHTML, (default value) ],
+  "folder-name": [ "text", "Folder Name:" ],
+  "node-name": [ "text", "Node Name:" ],
+  "node-category": [ "text", "category:", "examples" ],
+  "node-color": [ "color", "color:", "#ffffff" ],
+  "node-icon": [ "text", "icon", "file.svg" ],
+  "node-input": [ "number", "input", "1" ],
+  "node-output": [ "number", "output", "1" ],
+  "mcu-select": [ "checkbox", "for MCU?" ]
 }
 
 function iconLibrary() {
@@ -64,10 +31,10 @@ function iconLibrary() {
   nodeFunction = document.getElementById(divID[1])
   nodeExport = document.getElementById(divID[2])
 
-  for(let i in inputList) {
+  for(let i in nodeInputList) {
     let label = document.createElement('label')
     label.setAttribute('for', i)
-    label.innerHTML = inputList[i][1]
+    label.innerHTML = nodeInputList[i][1]
     nodeEditor.appendChild(label)
     if(i != "mcu-select") {
       nodeEditor.appendChild(document.createElement('br'))
@@ -75,10 +42,10 @@ function iconLibrary() {
 
     let input = document.createElement('input')
     input.setAttribute('id', i)
-    input.setAttribute('type', inputList[i][0])
+    input.setAttribute('type', nodeInputList[i][0])
     input.setAttribute('class', 'node-input')
-    if(inputList[i][2] !== undefined){
-      input.setAttribute('value', inputList[i][2])
+    if(nodeInputList[i][2] !== undefined){
+      input.setAttribute('value', nodeInputList[i][2])
     }
     if(i==="folder-name" || i==="node-name"){
       input.setAttribute('required', 'required')

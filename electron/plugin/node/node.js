@@ -7,14 +7,20 @@ function iconNode() {
   let StartNodeRED = document.createElement('button')
   StartNodeRED.setAttribute('id', 'start-node-red')
   StartNodeRED.setAttribute('onclick', 'StartNodeRED()')
-  StartNodeRED.innerHTML = 'Start Node-RED'
+  StartNodeRED.innerHTML = 'Start'
   workColumn.appendChild(StartNodeRED)
 
   let DisplayReloadNode = document.createElement('button')
   DisplayReloadNode.setAttribute('id', 'display-reload-node')
   DisplayReloadNode.setAttribute('onclick', 'DisplayReloadNode()')
-  DisplayReloadNode.innerHTML = 'Display Reload'
+  DisplayReloadNode.innerHTML = 'Editor'
   workColumn.appendChild(DisplayReloadNode)
+
+  let DisplayNodeUi = document.createElement('button')
+  DisplayNodeUi.setAttribute('id', 'display-node-ui')
+  DisplayNodeUi.setAttribute('onclick', 'DisplayNodeUi()')
+  DisplayNodeUi.innerHTML = 'UI Dashboard'
+  workColumn.appendChild(DisplayNodeUi)
 
   let webview = document.createElement('webview')
   webview.setAttribute('id', 'node-red')
@@ -28,4 +34,9 @@ function StartNodeRED() {
 
 function DisplayReloadNode() {
   iconNode()
+}
+
+function DisplayNodeUi() {
+  let webview = document.getElementById('node-red')
+  webview.setAttribute('src', 'http://localhost:8000/api/ui')
 }

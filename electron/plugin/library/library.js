@@ -120,11 +120,15 @@ function nodeCreate() {
 
 function buttonNodeName() {
   async function nodeName() {
-    const nodeName = await window.os.folderName('./user/create/node')
+    const nodeName = await window.os.folderRead('./user/create/node')
     return nodeName
   }
 
   const ul = document.getElementById('node-list')
+  while(ul.firstChild) {
+    ul.removeChild(ul.firstChild)
+  }
+
   nodeName().then(result => {
     console.log(result)
     for(i in result) {

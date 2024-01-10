@@ -4,7 +4,7 @@ const child_process = require('child_process')
 
 let fileOpen = ipcMain.handle('file-open', async (event) => {
   const { canceled, filePaths } = await dialog.showOpenDialog({
-      filters: [{ name: 'Documents', extensions: ['txt'] }],
+      filters: { name: 'All Files', extensions: ['*'] },
   })
   if (canceled) return { canceled, data: [] }
   const data = filePaths.map((filePath) =>
@@ -15,18 +15,18 @@ let fileOpen = ipcMain.handle('file-open', async (event) => {
   
 let fileSave = ipcMain.handle('file-save', async (event, data) => {
   const { canceled, filePath } = await dialog.showSaveDialog({
-      filters: [{ name: 'Documents', extensions: ['txt'] }],
+    filters: { name: 'All Files', extensions: ['*'] },
   })
   if (canceled) { return }
   fs.writeFileSync(filePath, data)
 })
 
-let folderName = ipcMain.handle('folder-name', async(event, path) => {
-  const folderName = fs.promises.readdir(path)
-  for(i in folderName) {
+let folderRead = ipcMain.handle('folder-read', async(event, path) => {
+  const folderRead = fs.promises.readdir(path)
+  for(i in folderRead) {
     console.log(i)
   }
-  return folderName
+  return folderRead
 })
 
 let openExternal = ipcMain.handle('open-external', async (event, url) => {
@@ -54,4 +54,4 @@ let execHandle = ipcMain.handle('exec-handle', async (event, command) => {
   })
 })
 
-module.exports = { fileOpen, fileSave, folderName, openExternal, darkMode, execHandle }
+module.exports = { fileOpen, fileSave, folderRead, openExternal, darkMode, execHandle }

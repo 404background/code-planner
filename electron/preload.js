@@ -59,5 +59,12 @@ contextBridge.exposeInMainWorld('os', {
     }
     save()
   },
+  fileSaveArg: (id, fileName) => {
+    async function save() {
+      const data =  document.getElementById(id).value
+      await ipcRenderer.invoke('file-save-arg', data, fileName)
+    }
+    save()
+  },
   folderRead: (path) => ipcRenderer.invoke('folder-read', path),
 })

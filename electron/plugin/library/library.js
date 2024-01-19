@@ -1,5 +1,5 @@
 const nodeInputList = {
-// id: [ type, innerHTML, (default value) ],
+// id: [ type, innerHTML, (default value) ]
   "folder-name": [ "text", "Folder Name:" ],
   "node-name": [ "text", "Node Name:" ],
   "node-category": [ "text", "category:", "examples" ],
@@ -8,6 +8,31 @@ const nodeInputList = {
   "node-input": [ "number", "input", "1" ],
   "node-output": [ "number", "output", "1" ],
   "mcu-select": [ "checkbox", "for MCU?" ]
+}
+
+const nodeInstallList = {
+// id: [ Element, (Attribute), innerHTML ]
+  "node-create": [ "input", [ ["type", "submit"], ["value", "Create"], ["onclick", "nodeCreate()"] ], "" ],
+  "node-ul-text": [ "p", "", "In user/create/node" ],
+  "node-list-button": [ "button", [ ["onclick", "buttonNodeName()"] ], "Node List" ],
+  "node-ul": [ "ul", [ ["onload", "buttonNodeName()"] ], "" ],
+  "node-install-label": [ "label", [ ["for", "nodeInstallText" ]], "Folder Name: " ],
+  "node-install-text": [ "input", [ ["type", "text" ]], "" ],
+  "node-install-button": [ "button", [ ["onclick", "nodeInstall()"] ], "Install" ]
+}
+
+const nodeFuntionList = {
+// id: [ Element, innerHTML ]
+  "node-label-function": [ "h2", "Paste here your function node program."],
+  "node-function-text": [ "textarea", ""]
+}
+
+const nodeExportList = {
+// id: [ Element, innerHTML ]
+  "node-label-js": [ "h2", "JS file" ],
+  "node-export-js": [ "textarea", "" ],
+  "node-label-html": [ "h2", "HTML file" ],
+  "node-export-html": [ "textarea", "" ]
 }
 
 function iconLibrary() {
@@ -32,6 +57,7 @@ function iconLibrary() {
   nodeExport = document.getElementById(divID[2])
 
   for(let i in nodeInputList) {
+    // id: [ type, innerHTML, (default value) ]
     let label = document.createElement('label')
     label.setAttribute('for', i)
     label.innerHTML = nodeInputList[i][1]
@@ -54,50 +80,32 @@ function iconLibrary() {
     nodeEditor.appendChild(document.createElement('br'))
   }
 
-  let nodeCreate = document.createElement('input')
-  nodeCreate.setAttribute('type', 'submit')
-  nodeCreate.setAttribute('value', 'Create')
-  nodeCreate.setAttribute('onclick', 'nodeCreate()')
-  nodeEditor.appendChild(nodeCreate)
+  for(let i in nodeInstallList) {
+    // id: [ Element, (Attribute), innerHTML ]
+    let element = document.createElement(nodeInstallList[i][0])
+    element.setAttribute('id', i)
+    for(let j=0; j<nodeInstallList[i][1].length; j++) {
+      element.setAttribute(nodeInstallList[i][1][j][0], nodeInstallList[i][1][j][1])
+    }
+    element.innerHTML = nodeInstallList[i][2]
+    nodeEditor.appendChild(element)
+  }
 
-  let nodeUlText = document.createElement('p')
-  nodeUlText.innerHTML = 'user/create/node'
-  nodeEditor.appendChild(nodeUlText)
+  for(let i in nodeFuntionList) {
+    // id: [ Element, innerHTML ]
+    let element = document.createElement(nodeFuntionList[i][0])
+    element.setAttribute('id', i)
+    element.innerHTML = nodeFuntionList[i][1]
+    nodeFunction.appendChild(element)
+  }
 
-  let nodeUl = document.createElement('ul')
-  nodeUl.setAttribute('id', 'node-list') 
-  nodeUl.setAttribute('onload', 'buttonNodeName()')
-  nodeEditor.appendChild(nodeUl)
-
-  let nodeName = document.createElement("button")
-  nodeName.setAttribute("id", 'buttonNodeName')
-  nodeName.setAttribute('onclick', 'buttonNodeName()')
-  nodeName.innerHTML = 'Node List'
-  nodeEditor.appendChild(nodeName)
-  nodeEditor.appendChild(document.createElement('br'))
-
-  let nodeInstallLabel = document.createElement('label')
-  nodeInstallLabel.setAttribute('for', 'nodeInstallText')
-  nodeInstallLabel.innerHTML = 'npm install '
-  nodeEditor.appendChild(nodeInstallLabel)
-
-  let nodeInstallText = document.createElement('input')
-  nodeInstallText.setAttribute('type', 'text')
-  nodeInstallText.setAttribute('id', 'nodeInstallText')
-  nodeEditor.appendChild(nodeInstallText)
-
-  let nodeInstallButton = document.createElement('button')
-  nodeInstallButton.setAttribute('onclick', 'nodeInstall()')
-  nodeInstallButton.innerHTML = 'Install'
-  nodeEditor.appendChild(nodeInstallButton)
-
-  let functionText = document.createElement('textarea')
-  functionText.setAttribute('id', 'functionText')
-  nodeFunction.appendChild(functionText)
-
-  let exportText = document.createElement('textarea')
-  exportText.setAttribute('id', 'exportText')
-  nodeExport.appendChild(exportText)
+  for(let i in nodeExportList) {
+    // id: [ Element, innerHTML ]
+    let element = document.createElement(nodeExportList[i][0])
+    element.setAttribute('id', i)
+    element.innerHTML = nodeExportList[i][1]
+    nodeExport.appendChild(element)
+  }
 
   buttonNodeName()
 }
@@ -114,8 +122,9 @@ function nodeCreate() {
       command += nodeInput.item(i).value + " "
     }
   }
-  console.log(document.getElementById('functionText').value)
+  console.log(document.getElementById('node-function-text').value)
   window.os.exec('python ./python/node_creater.py ' + command)
+  window.os.fileSaveArg('./user/create/node/function.tmp', 'node-function-text')
 }
 
 function buttonNodeName() {
@@ -124,7 +133,7 @@ function buttonNodeName() {
     return nodeName
   }
 
-  const ul = document.getElementById('node-list')
+  const ul = document.getElementById('node-ul')
   while(ul.firstChild) {
     ul.removeChild(ul.firstChild)
   }
@@ -140,6 +149,6 @@ function buttonNodeName() {
 }
 
 function nodeInstall() {
-  const command = document.getElementById('nodeInstallText').value
-  window.os.exec('npm install ./user/create/node/' + command)
+  const nodeName = document.getElementById('node-install-text').value
+  window.os.exec('npm install ./user/create/node/' + nodeName)
 }

@@ -21,6 +21,10 @@ let fileSave = ipcMain.handle('file-save', async (event, data) => {
   fs.writeFileSync(filePath, data)
 })
 
+let fileSaveArg = ipcMain.handle('file-save-arg', async (event, data, fileName) => {
+  fs.writeFileSync(fileName, data)
+})
+
 let folderRead = ipcMain.handle('folder-read', async(event, path) => {
   const folderRead = fs.promises.readdir(path)
   for(i in folderRead) {

@@ -9,13 +9,17 @@
 }
     
 #node-editor { grid-area: 1 / 1 / 2 / 2; }
-#node-function { grid-area: 1 / 2 / 2 / 3;}
+#node-function-text { grid-area: 1 / 2 / 2 / 3;}
 #node-export { grid-area: 1 / 3 / 2 / 4; }
-#functionText {
+#node-function-text {
     width: 100%;
-    height: 100%
+    height: 90%;
 }
-#exportText {
+#node-export-html {
     width: 100%;
-    height: 100%
+    height: 30%
+}
+#node-export-js {
+    width: 100%;
+    height: 30%
 }

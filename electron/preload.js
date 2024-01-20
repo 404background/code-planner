@@ -52,6 +52,13 @@ contextBridge.exposeInMainWorld('os', {
     }
     open()
   },
+  fileOpenArg: (id, filePath) => {
+    async function open() {
+      const text = await ipcRenderer.invoke('file-open-arg', filePath)
+      document.getElementById(id).value = text || ''
+    }
+    open()
+  },
   fileSave: (id) => {
     async function save() {
       const data =  document.getElementById(id).value
@@ -67,4 +74,8 @@ contextBridge.exposeInMainWorld('os', {
     save()
   },
   folderRead: (path) => ipcRenderer.invoke('folder-read', path),
+})
+
+contextBridge.exposeInMainWorld('sleep', {
+  ms: (ms) => ipcRenderer.invoke('sleep-ms', ms)
 })

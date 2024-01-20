@@ -12,6 +12,10 @@ let fileOpen = ipcMain.handle('file-open', async (event) => {
   )
   return { canceled, data }
 })
+
+let fileOpenArg = ipcMain.handle('file-open-arg', async (event, filePath) => {
+  return fs.readFileSync(filePath, { encoding: 'utf8' })
+})
   
 let fileSave = ipcMain.handle('file-save', async (event, data) => {
   const { canceled, filePath } = await dialog.showSaveDialog({
@@ -58,4 +62,16 @@ let execHandle = ipcMain.handle('exec-handle', async (event, command) => {
   })
 })
 
-module.exports = { fileOpen, fileSave, folderRead, openExternal, darkMode, execHandle }
+let sleepMs = ipcMain.handle('sleep-ms', async (event, ms) => {
+  return new Promise(resolve => setTimeout(resolve, ms))
+})
+
+module.exports = { 
+  fileOpen, fileOpenArg,
+  fileSave, fileSaveArg,
+  folderRead,
+  openExternal,
+  darkMode,
+  execHandle,
+  sleepMs
+}

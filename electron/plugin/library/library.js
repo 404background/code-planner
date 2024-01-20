@@ -122,9 +122,18 @@ function nodeCreate() {
       command += nodeInput.item(i).value + " "
     }
   }
-  // let functionTemp = document.getElementById('node-function-text').value
-  window.os.fileSaveArg('node-function-text', './user/create/node/function.tmp')
-  window.os.exec('python ./python/node_creater.py ' + command)
+  const folderName = nodeInput.item(0).value
+  const nodeName = nodeInput.item(1).value
+  const dir = './user/create/node/'
+  const nodeDir = dir + folderName + '/' + nodeName
+  const create = async () => {
+    window.os.fileSaveArg('node-function-text', './user/create/node/function.tmp')
+    window.os.exec('python ./python/node_creater.py ' + command)
+    await window.sleep.ms(2000)
+    window.os.fileOpenArg('node-export-js',  nodeDir + '.js')
+    window.os.fileOpenArg('node-export-html', nodeDir + '.html')
+  }
+  create()
 }
 
 function buttonNodeName() {

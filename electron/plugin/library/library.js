@@ -24,7 +24,7 @@ const nodeInstallList = {
 const nodeFuntionList = {
 // id: [ Element, innerHTML ]
   "node-label-function": [ "h2", "Paste here your function node program."],
-  "node-function-text": [ "textarea", ""]
+  "node-function-text": [ "textarea", "msg.payload = \'hello\'"]
 }
 
 const nodeExportList = {
@@ -122,9 +122,9 @@ function nodeCreate() {
       command += nodeInput.item(i).value + " "
     }
   }
-  console.log(document.getElementById('node-function-text').value)
+  // let functionTemp = document.getElementById('node-function-text').value
+  window.os.fileSaveArg('node-function-text', './user/create/node/function.tmp')
   window.os.exec('python ./python/node_creater.py ' + command)
-  window.os.fileSaveArg('./user/create/node/function.tmp', 'node-function-text')
 }
 
 function buttonNodeName() {

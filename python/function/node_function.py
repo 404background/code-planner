@@ -31,7 +31,12 @@ class NodeCreater:
     
     def _add_name_template(self, name):
         return './template/node/' + name
-        
+    
+    def readFunction(self):
+        f = open('./user/create/node/function.tmp', 'r')
+        function = f.read()
+        f.close()
+        return function
         
     def createJS(self):
         f = open(self._add_name_template('node.js.txt'), 'r')
@@ -39,7 +44,7 @@ class NodeCreater:
         template = Template(template)
         text = template.substitute(nodeName=self.nodeName, 
                                    nodeNameFunction=self.functionName,
-                                   function=self.function)
+                                   function=self.readFunction())
         f.close()
         
         f = open(self._add_name_folder(self.fileName) + '.js', "w")

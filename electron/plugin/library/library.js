@@ -127,6 +127,7 @@ function nodeCreate() {
   const dir = './user/create/node/'
   const nodeDir = dir + folderName + '/' + nodeName
   const create = async () => {
+    window.os.folderMakeArg('./user/create/node/' + folderName)
     window.os.fileSaveArg('node-function-text', './user/create/node/function.tmp')
     window.os.exec('python ./python/node_creater.py ' + command)
     await window.sleep.ms(2000)

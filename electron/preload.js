@@ -74,6 +74,7 @@ contextBridge.exposeInMainWorld('os', {
     save()
   },
   folderRead: (path) => ipcRenderer.invoke('folder-read', path),
+  folderMakeArg: (path) => ipcRenderer.invoke('folder-make-arg', path),
 })
 
 contextBridge.exposeInMainWorld('sleep', {

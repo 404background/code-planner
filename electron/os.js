@@ -37,6 +37,12 @@ let folderRead = ipcMain.handle('folder-read', async(event, path) => {
   return folderRead
 })
 
+let folderMakeArg = ipcMain.handle('folder-make-arg', async (event, path) => {
+  fs.mkdir(path, { recursive: true }, (err) => {
+    if (err) throw err;
+  })
+})
+
 let openExternal = ipcMain.handle('open-external', async (event, url) => {
   shell.openExternal(url)
 })
@@ -69,7 +75,7 @@ let sleepMs = ipcMain.handle('sleep-ms', async (event, ms) => {
 module.exports = { 
   fileOpen, fileOpenArg,
   fileSave, fileSaveArg,
-  folderRead,
+  folderRead, folderMakeArg,
   openExternal,
   darkMode,
   execHandle,

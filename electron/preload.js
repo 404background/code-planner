@@ -13,17 +13,6 @@ const iconList = {
 }
 
 contextBridge.exposeInMainWorld('myApi', {
-  setup: () => {
-    document.querySelector('.file-open').addEventListener('click', async () => {
-        const { canceled, data } = await ipcRenderer.invoke('file-open')
-        if (canceled) { return }
-        document.querySelector('.text-area').value = data[0] || ''
-    })
-    document.querySelector('.file-save').addEventListener('click', async () => {
-        const data =  document.querySelector('.text-area').value
-        await ipcRenderer.invoke('file-save', data)
-    })
-  },
   // iconList: () => ipcRenderer.invoke('plugin-list'),
   iconDisplay: () => {
     let iconColumn = document.getElementById("icon-column")
@@ -55,5 +44,39 @@ contextBridge.exposeInMainWorld('darkMode', {
 contextBridge.exposeInMainWorld('os', {
   openExternal: () => ipcRenderer.invoke('open-external', url),
   exec: (command) => ipcRenderer.invoke('exec-handle', command),
-  folderName: (path) => ipcRenderer.invoke('folder-name', path)
+  fileOpen: (id) => {
+    async function open() {
+      const { canceled, data } = await ipcRenderer.invoke('file-open')
+      if (canceled) { return }
+      document.getElementById(id).value = data[0] || ''
+    }
+    open()
+  },
+  fileOpenArg: (id, filePath) => {
+    async function open() {
+      const text = await ipcRenderer.invoke('file-open-arg', filePath)
+      document.getElementById(id).value = text || ''
+    }
+    open()
+  },
+  fileSave: (id) => {
+    async function save() {
+      const data =  document.getElementById(id).value
+      await ipcRenderer.invoke('file-save', data)
+    }
+    save()
+  },
+  fileSaveArg: (id, fileName) => {
+    async function save() {
+      const data =  document.getElementById(id).value
+      await ipcRenderer.invoke('file-save-arg', data, fileName)
+    }
+    save()
+  },
+  folderRead: (path) => ipcRenderer.invoke('folder-read', path),
+  folderMakeArg: (path) => ipcRenderer.invoke('folder-make-arg', path),
+})
+
+contextBridge.exposeInMainWorld('sleep', {
+  ms: (ms) => ipcRenderer.invoke('sleep-ms', ms)
 })

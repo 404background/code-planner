@@ -18,9 +18,6 @@ class NodeCreater:
         self.inputs = inputs
         self.outputs = outputs
         self.mcu = mcu
-        # f = open('./user/create/node/node-function.tmp', 'r')
-        # self.function = f.read()
-        # f.close()
         self.function = ""
     
     def debug(self):
@@ -31,15 +28,19 @@ class NodeCreater:
     
     def _add_name_template(self, name):
         return './template/node/' + name
-        
+    
+    def readFunction(self):
+        f = open('./user/create/node/function.tmp', 'r')
+        function = f.read()
+        f.close()
+        return function
         
     def createJS(self):
         f = open(self._add_name_template('node.js.txt'), 'r')
         template = f.read()
-        template = Template(template)
-        text = template.substitute(nodeName=self.nodeName, 
+        text = Template(template).substitute(nodeName=self.nodeName, 
                                    nodeNameFunction=self.functionName,
-                                   function=self.function)
+                                   function=self.readFunction())
         f.close()
         
         f = open(self._add_name_folder(self.fileName) + '.js', "w")
@@ -49,8 +50,7 @@ class NodeCreater:
     def createHTML(self):
         f = open(self._add_name_template('node.html.txt'), 'r')
         template = f.read()
-        test = Template(template)
-        text = test.substitute(nodeName = self.nodeName,
+        text = Template(template).substitute(nodeName = self.nodeName,
                             nodeNameFunction = self.functionName,
                             nodeCategory = self.category,
                             nodeColor=self.color,
@@ -66,9 +66,8 @@ class NodeCreater:
     def createPackage(self):
         f = open(self._add_name_template('package.json.txt'), 'r')
         template = f.read()
-        test = Template(template)
-        text = test.substitute(folderName = self.folderName,
-                               nodeName = self.nodeName)
+        text = Template(template).substitute(folderName = self.folderName,
+                                             nodeName = self.nodeName)
         f.close()
         
         f = open(self._add_name_folder('package.json'), "w")
@@ -77,8 +76,13 @@ class NodeCreater:
     
     #for Node-RED MCU
     def createManifest(self):
-        f = open(self._add_name_folder('manifest.json'), "w")
+        f = open(self._add_name_template('manifest.json.txt'), "r")
+        template = f.read()
+        text = Template(template).substitute(nodeName = self.nodeName)
+        f.close()
         
+        f = open(self._add_name_folder('manifest.json'), "w")
+        f.write(text)
         f.close()
 
     def createNode(self):

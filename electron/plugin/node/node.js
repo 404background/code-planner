@@ -7,22 +7,22 @@ const nodeRedButton = {
 }
 
 function iconNode() {
-  let workColumn = document.getElementById('work-column')
-  while(workColumn.firstChild) {
-    workColumn.removeChild(workColumn.firstChild)
-  }
+  const divID = ["node"]
+  window.common.iconInit('node', divID)
+  node = document.getElementById(divID[0])
+
   for(i in nodeRedButton) {
     let element = document.createElement('button')
     element.setAttribute('id', i)
     element.setAttribute('onclick', nodeRedButton[i][0])
     element.innerHTML = nodeRedButton[i][1]
-    workColumn.appendChild(element)
+    node.appendChild(element)
   }
 
   let webview = document.createElement('webview')
   webview.setAttribute('id', 'node-red')
   webview.setAttribute('src', 'http://localhost:8000/red')
-  workColumn.appendChild(webview)
+  node.appendChild(webview)
 }
 
 function StartNodeRED() {

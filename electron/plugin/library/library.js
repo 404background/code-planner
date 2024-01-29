@@ -36,21 +36,8 @@ const nodeExportList = {
 }
 
 function iconLibrary() {
-  let workColumn = document.getElementById('work-column')
-  while(workColumn.firstChild) {
-    workColumn.removeChild(workColumn.firstChild)
-  }
-
-  let library = document.createElement('div')
-  library.setAttribute('id', 'library')
-  workColumn.appendChild(library)
-
   const divID = ["node-editor", "node-function", "node-export"]
-  for(let i=1; i<4; i++) {
-    let div = document.createElement('div')
-    div.setAttribute("id", divID[i-1])
-    library.appendChild(div)
-  }
+  window.common.iconInit('library', divID)
 
   nodeEditor = document.getElementById(divID[0])
   nodeFunction = document.getElementById(divID[1])

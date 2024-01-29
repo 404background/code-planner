@@ -8,7 +8,9 @@ moddable/
 Espressif/
 jupyter/
 .node-red/
+voicevox_core/
 
 # file
 package-lock.json
 .bash_history
+*.dll

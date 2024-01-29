@@ -57,3 +57,8 @@ CLIに表示されるURLのクエリに含まれます。
 
 Node-RED用のノードを作成するためのプログラムです。  
 必要なファイルを生成します。  
+
+## VOICEVOX
+
+音声合成にはVOICEVOXを利用しています。
+<https://voicevox.hiroshiba.jp/>

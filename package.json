@@ -10,10 +10,6 @@
     "win-mcu-setup": "start /d windows mcu-setup.bat",
     "win-mcu-hello": "start /d windows mcu-hello.bat",
     "app": "electron ./electron/app.js",
-    "node-test": "python ./python/node_test.py",
-    "stl-test": "python ./python/stl_test.py",
-    "plugin-test": "python ./python/plugin_test.py",
-    "arduino-creater": "python ./python/arduino_creater.py",
     "node-red": "start node ./node-red.js",
     "win-jupyter": "python -m venv jupyter && start /d windows jupyter-lab.bat"
   },

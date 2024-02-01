@@ -2,3 +2,29 @@
     width: 95vw;
     height: 95vh;
 }
+
+#node-split {
+    display: flex;
+    border: 1px solid #808080;
+}
+  
+#node-left-view {
+    background-color: #F0F0F0;
+    flex-basis: 60vw;
+    height: 95vh;
+}
+#node-right-view {
+    flex-basis: 40vw;
+    height: 95vh;
+}
+
+#node-splitter {
+    flex-basis: 5px;
+    cursor: col-resize; 
+    background-color: gray;
+}
+
+#node-splitter:hover {
+    flex-basis: 20px;
+    background-color: transparent;
+}

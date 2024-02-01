@@ -12,7 +12,7 @@ const nodeInputList = {
 
 const nodeInstallList = {
 // id: [ Element, (Attribute), innerHTML ]
-  "node-create": [ "input", [ ["type", "submit"], ["value", "Create"], ["onclick", "nodeCreate()"] ], "" ],
+  "node-create": [ "button", [ ["onclick", "nodeCreate()"] ], "Create" ],
   "node-ul-text": [ "p", "", "In user/create/node" ],
   "node-list-button": [ "button", [ ["onclick", "buttonNodeName()"] ], "Node List" ],
   "node-ul": [ "ul", [ ["onload", "buttonNodeName()"] ], "" ],
@@ -81,6 +81,9 @@ function iconLibrary() {
   for(let i in nodeFuntionList) {
     // id: [ Element, innerHTML ]
     let element = document.createElement(nodeFuntionList[i][0])
+    if(nodeFuntionList[i][0] == 'textarea') {
+      element.setAttribute('spellcheck', 'false')
+    }
     element.setAttribute('id', i)
     element.innerHTML = nodeFuntionList[i][1]
     nodeFunction.appendChild(element)

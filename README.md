@@ -61,5 +61,5 @@ Node-RED用のノードを作成するためのプログラムです。
 
 ## VOICEVOX
 
-音声合成にはVOICEVOXを利用しています。
+音声合成にはVOICEVOXを利用しています。  
 <https://voicevox.hiroshiba.jp/>

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu+Mono');
+
 :root {
   color-scheme: light dark;
 }
@@ -61,6 +63,17 @@
 }
 
 textarea {
-  font-family: 'Noto Sans JP', sans-serif;
+  font-family: 'Ubuntu Mono', monospace;
   outline: none;
+  font-size: 20px;
+}
+
+input {
+  font-family: 'Ubuntu Mono', monospace;
+  font-size: 20px;
+}
+
+button {
+  font-size: 16px;
+  margin: 2px;
 }

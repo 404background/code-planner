@@ -12,7 +12,7 @@ const nodeInputList = {
 
 const nodeInstallList = {
 // id: [ Element, (Attribute), innerHTML ]
-  "node-create": [ "input", [ ["type", "submit"], ["value", "Create"], ["onclick", "nodeCreate()"] ], "" ],
+  "node-create": [ "button", [ ["onclick", "nodeCreate()"] ], "Create" ],
   "node-ul-text": [ "p", "", "In user/create/node" ],
   "node-list-button": [ "button", [ ["onclick", "buttonNodeName()"] ], "Node List" ],
   "node-ul": [ "ul", [ ["onload", "buttonNodeName()"] ], "" ],
@@ -36,21 +36,8 @@ const nodeExportList = {
 }
 
 function iconLibrary() {
-  let workColumn = document.getElementById('work-column')
-  while(workColumn.firstChild) {
-    workColumn.removeChild(workColumn.firstChild)
-  }
-
-  let library = document.createElement('div')
-  library.setAttribute('id', 'library')
-  workColumn.appendChild(library)
-
   const divID = ["node-editor", "node-function", "node-export"]
-  for(let i=1; i<4; i++) {
-    let div = document.createElement('div')
-    div.setAttribute("id", divID[i-1])
-    library.appendChild(div)
-  }
+  window.common.iconInit('library', divID)
 
   nodeEditor = document.getElementById(divID[0])
   nodeFunction = document.getElementById(divID[1])
@@ -94,6 +81,9 @@ function iconLibrary() {
   for(let i in nodeFuntionList) {
     // id: [ Element, innerHTML ]
     let element = document.createElement(nodeFuntionList[i][0])
+    if(nodeFuntionList[i][0] == 'textarea') {
+      element.setAttribute('spellcheck', 'false')
+    }
     element.setAttribute('id', i)
     element.innerHTML = nodeFuntionList[i][1]
     nodeFunction.appendChild(element)

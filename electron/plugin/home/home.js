@@ -1,19 +1,9 @@
 function iconHome() {
-    let workColumn = document.getElementById('work-column')
-    if(workColumn.hasChildNodes())
-    while(workColumn.firstChild) {
-        workColumn.removeChild(workColumn.firstChild)
-    }
-
-    let home = document.createElement('div')
-    home.setAttribute('id', 'home')
-    workColumn.appendChild(home)
-
+    const divID = []
     for(let i=1; i<5; i++) {
-        let div = document.createElement('div')
-        div.setAttribute("id", `div${i}`)
-        home.appendChild(div)
+        divID.push(`div${i}`)
     }
+    window.common.iconInit('home', divID)
 
     let h1 = document.createElement('h1')
     h1.innerHTML = 'Welcome'
@@ -55,6 +45,11 @@ function iconHome() {
         commandList.appendChild(command)
     }
     div2.appendChild(commandList)
+
+    let audio = document.createElement("button")
+    audio.setAttribute('onclick', 'audio()')
+    audio.innerHTML = 'Audio'
+    div2.appendChild(audio)
 
     let urlLabel = document.createElement("label")
     urlLabel.setAttribute("for", 'inputURL')
@@ -123,4 +118,10 @@ function buttonExec() {
 
 function commandListClick(element) {
     window.os.exec(element.innerHTML)
+}
+
+function audio() {
+    audio = new Audio()
+    audio.src = "../user/create/voicevox/こんにちは.wav"
+    audio.play()
 }

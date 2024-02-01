@@ -80,3 +80,20 @@ contextBridge.exposeInMainWorld('os', {
 contextBridge.exposeInMainWorld('sleep', {
   ms: (ms) => ipcRenderer.invoke('sleep-ms', ms)
 })
+
+contextBridge.exposeInMainWorld('common', {
+  iconInit: (id, divID) => {
+    let workColumn = document.getElementById('work-column')
+    while(workColumn.firstChild) {
+      workColumn.removeChild(workColumn.firstChild)
+    }
+    let div = document.createElement('div')
+    div.setAttribute('id', id)
+    workColumn.appendChild(div)
+    for(let i=1; i<divID.length+1; i++) {
+      let divArray = document.createElement('div')
+      divArray.setAttribute("id", divID[i-1])
+      div.appendChild(divArray)
+    }
+  }
+})

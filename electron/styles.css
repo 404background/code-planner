@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu+Mono');
+
 :root {
   color-scheme: light dark;
 }
@@ -58,4 +60,20 @@
 .select-icon:hover {
   opacity: 0.5;
   padding: 0px 0px 0px 5px;
+}
+
+textarea {
+  font-family: 'Ubuntu Mono', monospace;
+  outline: none;
+  font-size: 20px;
+}
+
+input {
+  font-family: 'Ubuntu Mono', monospace;
+  font-size: 20px;
+}
+
+button {
+  font-size: 16px;
+  margin: 2px;
 }

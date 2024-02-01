@@ -1,6 +1,6 @@
 # code-planner
 
-※現状ではWindowsのみで動作します。  
+**※現状ではWindows環境のみ動作します。**  
 
 1. [Node.js](https://nodejs.org/en)をインストールしてください。
 2. `npm run setup`を実行してください。
@@ -15,6 +15,30 @@ Jupyter Labを利用する場合は、`npm run win-jupyter`を実行してくだ
 ## デスクトップアプリケーションの実行
 
 `npm run app`を実行してください。  
+
+## Node-RED
+
+アイコンをクリックすると、画面が切り替わります。  
+Startボタンを押すと、Node-REDが起動します。  
+
+## Jupyter Lab
+
+`npm run win-jupyter`を実行すると起動します。  
+アプリ内でログインが必要な場合は、tokenを入力してください。  
+CLIに表示されるURLのクエリに含まれます。  
+例：http://localhost:8888/lab?token=...  
+
+## Node-Creater
+
+Node-RED用のノードを作成するためのプログラムです。  
+必要なファイルを生成します。  
+
+## VOICEVOX
+
+音声合成にはVOICEVOXを利用しています。バージョン0.14.5で動作確認済みです。  
+windowsフォルダのvoicevox.ps1を実行すると、環境を構築することができます。  
+<https://voicevox.hiroshiba.jp/>
+<https://404background.com/program/voicevox-core/>
 
 ## Node-RED MCUの環境構築
 
@@ -46,20 +70,3 @@ Visual Studio 2022のx86 Native Tools Command Prompt for VS 2022が必要です�
 Visual Studio 2022のx86コマンドプロンプトが起動します。  
 `npm run win-mcu-setup`でmoddableのビルド、ESP-IDFのセットアップが行われます。  
 `npm run win-mcu-hello`でhello worldサンプルが実行されます。  
-
-## Jupyter Lab
-
-`npm run win-jupyter`を実行すると起動します。  
-アプリ内でログインが必要な場合は、tokenを入力してください。  
-CLIに表示されるURLのクエリに含まれます。  
-例：http://localhost:8888/lab?token=...  
-
-## Node-Creater
-
-Node-RED用のノードを作成するためのプログラムです。  
-必要なファイルを生成します。  
-
-## VOICEVOX
-
-音声合成にはVOICEVOXを利用しています。  
-<https://voicevox.hiroshiba.jp/>

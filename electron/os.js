@@ -61,9 +61,11 @@ let execHandle = ipcMain.handle('exec-handle', async (event, command) => {
     if ( error instanceof Error) {
         console.error(error);
         console.log('exec Error *******');
+        fs.appendFileSync('./user/error.log', error.toString().trim())
     } else {
         console.log(stdout);
         console.log('exec Success!');
+        fs.appendFileSync('./user/console.log', stdout.toString().trim())
     }
   })
 })

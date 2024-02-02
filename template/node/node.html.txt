@@ -22,4 +22,5 @@
 </script>
 
 <script type="text/html" data-help-name="${nodeName}">
+${help}
 </script>

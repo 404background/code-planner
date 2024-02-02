@@ -4,7 +4,7 @@ from string import Template
 class NodeCreater:
     def __init__(self, folderName, nodeName, category="examples", 
                  color="#ffffff", icon="file.svg", inputs="1", outputs="1", 
-                 mcu=False):
+                 mcu=False, nodeHelp=""):
         directory = 'user/create/node/' + folderName
         if not os.path.exists(directory):
             os.mkdir(directory)
@@ -19,6 +19,7 @@ class NodeCreater:
         self.outputs = outputs
         self.mcu = mcu
         self.function = ""
+        self.nodeHelp = nodeHelp
     
     def debug(self):
         print(vars(self))
@@ -31,14 +32,26 @@ class NodeCreater:
     
     def readFunction(self):
         f = open('./user/create/node/function.tmp', 'r')
-        function = f.read()
+        functionTmp = f.readlines()
         f.close()
-        return function
+        functionText = ''
+        for i in functionTmp:
+            functionText += '            ' + i
+        return functionText
+    
+    def readHelp(self):
+        f = open('./user/create/node/help.tmp', 'r')
+        helpTmp = f.readlines()
+        f.close()
+        helpText = ''
+        for i in helpTmp:
+            helpText += '    ' + i
+        return helpText
         
     def createJS(self):
         f = open(self._add_name_template('node.js.txt'), 'r')
         template = f.read()
-        text = Template(template).substitute(nodeName=self.nodeName, 
+        text = Template(template).substitute(nodeName=self.nodeName,
                                    nodeNameFunction=self.functionName,
                                    function=self.readFunction())
         f.close()
@@ -56,7 +69,8 @@ class NodeCreater:
                             nodeColor=self.color,
                             nodeInputs = self.inputs,
                             nodeOutputs = self.outputs,
-                            nodeIcon = self.icon)
+                            nodeIcon = self.icon,
+                            help = self.readHelp())
         f.close()
         
         f = open(self._add_name_folder(self.fileName) + '.html', "w")

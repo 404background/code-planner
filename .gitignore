@@ -6,9 +6,9 @@ python/test/
 user/create/
 moddable/
 Espressif/
-jupyter/
 .node-red/
 voicevox_core/
+.venv/
 
 # file
 package-lock.json

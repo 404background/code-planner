@@ -1,6 +1,6 @@
 #library {
     display: grid;
-    grid-template-columns: 400px repeat(2, 1fr);
+    grid-template-columns: 320px 1fr 1fr;
     grid-template-rows: repeat(2, 1fr);
     grid-column-gap: 0px;
     grid-row-gap: 0px;

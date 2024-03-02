@@ -4,40 +4,47 @@ const nodeInputList = {
     "node-name": [ "text", "Node Name:" ],
     "node-category": [ "text", "category:", "examples" ],
     "node-color": [ "color", "color:", "#ffffff" ],
-    "node-icon": [ "text", "icon", "file.svg" ],
-    "node-input": [ "number", "input", "1" ],
-    "node-output": [ "number", "output", "1" ],
+    "node-icon": [ "text", "<a href = https://nodered.jp/docs/creating-nodes/appearance>icon:<a>", "file.svg" ],
+    "node-input": [ "number", "input:", "1" ],
+    "node-output": [ "number", "output:", "1" ],
     "mcu-select": [ "checkbox", "for MCU?" ]
 }
 
 // id: [ Element, (Attribute), innerHTML ]
-const nodeInstallList = {
+const nodeInputDiv = {
+  "node-input-head": [ "h1", "", "Node Creator" ]
+}
+
+const nodeInstallDiv = {
   "node-create": [ "button", [ ["onclick", "nodeCreate()"] ], "Create" ],
-  "node-ul-text": [ "p", "", "In user/create/node" ],
+  "node-ul-text": [ "h3", "", "In user/create/node" ],
   "node-list-button": [ "button", [ ["onclick", "buttonNodeName()"] ], "Node List" ],
   "node-ul": [ "ul", [ ["onload", "buttonNodeName()"] ], "" ],
   "node-install-text": [ "input", [ ["type", "text" ], [ "placeholder", "folder name" ] ], "" ],
-  "node-install-button": [ "button", [ ["onclick", "nodeNpmInstall()"] ], "Install" ]
+  "node-install-button": [ "button", [ ["onclick", "nodeNpmInstall()"] ], "install" ],
+  "node-uninstall-text": [ "input", [ ["type", "text" ], [ "placeholder", "node name" ] ], "" ],
+  "node-uninstall-button": [ "button", [ ["onclick", "nodeNpmUninstall()"] ], "uninstall" ],
+  "node-npm-list": [ "button", [ ["onclick", "npmList()"] ], "npm list" ]
 }
 
-const nodeFunctionList = {
+const nodeFunctionDiv = {
   "node-label-function": [ "h2", "", "Function"],
   "node-function-text": [ "textarea", [ ["spellcheck", "false"], [ "class", "node-text" ] ], "msg.payload = \'hello\'"],
 }
 
-const nodeHelpList = {
-  "node-label-help": [ "h2", "", "Help Text"],
+const nodeHelpDiv = {
+  "node-label-help": [ "h2", "", "<a href = https://nodered.jp/docs/creating-nodes/help-style-guide>Help Text<a>"],
   "node-help-text": [ "textarea", [ ["spellcheck", "false"], [ "class", "node-text" ] ], ""]
 }
 
-const nodeFileJSList = {
+const nodeFileJSDiv = {
   "node-label-js": [ "h2", "", "JS file" ],
   "node-save-js": [ "button", [ ["onclick", "buttonSaveFile('node-export-js', '.js')"] ], "Save" ],
   "node-export-js": [ "textarea", [ ["spellcheck", "false"], [ "class", "node-text" ] ], "" ]
 }
 
-const nodeFileHTMLList = {
-  "node-label-html": [ "h2", "", "HTML file" ],
+const nodeFileHTMLDiv = {
+  "node-label-html": [ "h2", "", "<a href = https://nodered.jp/docs/creating-nodes/node-html>HTML file<a>" ],
   "node-save-html": [ "button", [ ["onclick", "buttonSaveFile('node-export-html', '.html')"] ], "Save" ],
   "node-export-html": [ "textarea", [ ["spellcheck", "false"], [ "class", "node-text" ] ], "" ]
 }
@@ -45,14 +52,27 @@ const nodeFileHTMLList = {
 function iconLibrary() {
   const divID = ["node-input", "node-install", "node-function", "node-help", "node-file-js", "node-file-html"]
   window.common.iconInit('library', divID)
-  const nodeList = [
-    nodeInputList,
-    nodeInstallList,
-    nodeFunctionList, 
-    nodeHelpList, 
-    nodeFileJSList, 
-    nodeFileHTMLList
+  const nodeDiv = [
+    nodeInputDiv,
+    nodeInstallDiv,
+    nodeFunctionDiv, 
+    nodeHelpDiv, 
+    nodeFileJSDiv, 
+    nodeFileHTMLDiv
   ]
+
+  for(let divNumber=0; divNumber<nodeDiv.length; divNumber++) {
+    for(let list in nodeDiv[divNumber]) {
+      let element = document.createElement(nodeDiv[divNumber][list][0])
+      element.setAttribute('id', list)
+      for(let i=0; i<nodeDiv[divNumber][list][1].length; i++) {
+        element.setAttribute(nodeDiv[divNumber][list][1][i][0], nodeDiv[divNumber][list][1][i][1])
+      }
+      element.innerHTML = nodeDiv[divNumber][list][2]
+      let parent = document.getElementById(divID[divNumber])
+      parent.appendChild(element)
+    }
+  }
 
   for(let i in nodeInputList) {
     let parent = document.getElementById(divID[0])
@@ -80,18 +100,6 @@ function iconLibrary() {
     parent.appendChild(document.createElement('br'))
   }
 
-  for(let divNumber=1; divNumber<nodeList.length; divNumber++) {
-    for(let list in nodeList[divNumber]) {
-      let element = document.createElement(nodeList[divNumber][list][0])
-      element.setAttribute('id', list)
-      for(let i=0; i<nodeList[divNumber][list][1].length; i++) {
-        element.setAttribute(nodeList[divNumber][list][1][i][0], nodeList[divNumber][list][1][i][1])
-      }
-      element.innerHTML = nodeList[divNumber][list][2]
-      let parent = document.getElementById(divID[divNumber])
-      parent.appendChild(element)
-    }
-  }
   buttonNodeName()
 }
 
@@ -146,6 +154,15 @@ function buttonNodeName() {
 function nodeNpmInstall() {
   const nodeName = document.getElementById('node-install-text').value
   window.os.exec('npm install ./user/create/node/' + nodeName)
+}
+
+function nodeNpmUninstall() {
+  const nodeName = document.getElementById('node-uninstall-text').value
+  window.os.exec('npm uninstall ' + nodeName)
+}
+
+function npmList() {
+  window.os.exec('start npm list')
 }
 
 function buttonSaveFile(id, fileFormat) {

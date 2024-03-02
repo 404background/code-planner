@@ -8,6 +8,7 @@ call cd C://
 call mkdir pjt
 call cd pjt
 call git clone https://github.com/Moddable-OpenSource/moddable.git
+call git pull
 call cd %MODDABLE%\build\makefiles\win
 call build
 @REM setup ESP-IDF

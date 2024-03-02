@@ -5,13 +5,14 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "setup": "npm install electron --save-dev && npm install express && npm install node-red",
+    "setup": "npm install electron --save-dev",
+    "win-setup": "start setup.bat",
     "win-cmd": "%comspec% /k \"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\\\VC\\Auxiliary\\Build\\vcvars32.bat\"",
     "win-mcu-setup": "start /d windows mcu-setup.bat",
     "win-mcu-hello": "start /d windows mcu-hello.bat",
     "app": "electron ./electron/app.js",
     "node-red": "start node ./node-red.js",
-    "win-jupyter": "python -m venv jupyter && start /d windows jupyter-lab.bat"
+    "win-jupyter": "start /d windows jupyter.bat"
   },
   "repository": {
     "type": "git",
@@ -26,11 +27,12 @@
   "devDependencies": {
     "@moddable-node-red/mcu": "^1.0.4",
     "@ralphwetzel/node-red-mcu-plugin": "github:ralphwetzel/node-red-mcu-plugin",
-    "electron": "^28.1.1",
+    "electron": "^28.2.2",
     "node-red-dashboard": "^3.6.2"
   },
   "dependencies": {
     "express": "^4.18.2",
-    "node-red": "^3.1.3"
+    "node-red": "^3.1.5",
+    "node-red-contrib-aedes": "^0.12.0"
   }
 }

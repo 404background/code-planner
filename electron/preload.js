@@ -6,8 +6,9 @@ const iconList = {
   // "stl":  "./images/cube-solid.svg",
   // "ino": "./images/microchip-solid.svg",
   "node": "./images/share-nodes-solid.svg",
-  "python": "./images/python.svg",
   "library": "./images/book-solid.svg",
+  "jupyter": "./images/python.svg",
+  "talk": "./images/comments-solid.svg"
   // "brain": "./images/brain-solid.svg",
   // "setting": "./images/gear-solid.svg",
 }

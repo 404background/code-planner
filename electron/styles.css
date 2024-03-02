@@ -74,10 +74,18 @@ input {
 }
 
 input::placeholder{
-  color:gray;
+  color: gray;
 }
 
 button {
   font-size: 16px;
   margin: 2px;
+}
+
+a {
+  color: black;
+}
+
+a:hover {
+  color: gray;
 }

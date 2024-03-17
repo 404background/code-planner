@@ -1,3 +1,4 @@
+call "C:\Program Files\Microsoft Visual Studio\2022\Community\\VC\Auxiliary\Build\vcvars32.bat"
 call cd ..
 call set MODDABLE=C:\pjt\moddable
 call cd %MODDABLE%\examples\helloworld

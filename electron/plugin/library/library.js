@@ -123,8 +123,7 @@ function nodeCreate() {
     window.os.folderMakeArg('./user/create/node/' + folderName)
     window.os.fileSaveArg('node-function-text', './user/create/node/function.tmp')
     window.os.fileSaveArg('node-help-text', './user/create/node/help.tmp')
-    window.os.exec('python ./python/node_creater.py ' + command)
-    await window.sleep.ms(2000)
+    window.os.execSync('python ./python/node_creater.py ' + command)
     window.os.fileOpenArg('node-export-js',  nodeDir + '.js')
     window.os.fileOpenArg('node-export-html', nodeDir + '.html')
   }

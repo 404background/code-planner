@@ -8,7 +8,7 @@ const iconList = {
   "node": "./images/share-nodes-solid.svg",
   "library": "./images/book-solid.svg",
   "jupyter": "./images/python.svg",
-  "talk": "./images/comments-solid.svg"
+  // "talk": "./images/comments-solid.svg"
   // "brain": "./images/brain-solid.svg",
   // "setting": "./images/gear-solid.svg",
 }
@@ -45,6 +45,7 @@ contextBridge.exposeInMainWorld('darkMode', {
 contextBridge.exposeInMainWorld('os', {
   openExternal: () => ipcRenderer.invoke('open-external', url),
   exec: (command) => ipcRenderer.invoke('exec-handle', command),
+  execSync: (command) => ipcRenderer.invoke('execSync-handle', command),
   fileOpen: (id) => {
     async function open() {
       const { canceled, data } = await ipcRenderer.invoke('file-open')

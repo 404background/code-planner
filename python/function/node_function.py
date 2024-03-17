@@ -1,4 +1,4 @@
-import os
+import os, json
 from string import Template
 
 class NodeCreater:
@@ -98,6 +98,16 @@ class NodeCreater:
         f = open(self._add_name_folder('manifest.json'), "w")
         f.write(text)
         f.close()
+        
+        with open('./node_modules/@ralphwetzel/node-red-mcu-plugin/node-red-mcu/node_types.json', 'r') as f:
+            jsonList = json.load(f)
+        text = f"../../../../user/create/node/{self.folderName}/manifest.json"
+        jsonList.update({self.nodeName: text})
+        jsonList = json.dumps(jsonList, indent=4)
+        with open('./node_modules/@ralphwetzel/node-red-mcu-plugin/node-red-mcu/node_types.json', 'w') as f:
+            f.write(jsonList)
+        
+        
 
     def createNode(self):
         self.createJS()

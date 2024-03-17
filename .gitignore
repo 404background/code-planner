@@ -9,6 +9,8 @@ Espressif/
 .node-red/
 voicevox_core/
 .venv/
+pyenv/
+voicevox/create/
 
 # file
 package-lock.json

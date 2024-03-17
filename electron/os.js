@@ -70,6 +70,20 @@ let execHandle = ipcMain.handle('exec-handle', async (event, command) => {
   })
 })
 
+let execSyncHandle = ipcMain.handle('execSync-handle', async (event, command) => {
+  child_process.execSync(command, (error, stdout, stderr) => {
+    if ( error instanceof Error) {
+        console.error(error);
+        console.log('execSync Error *******');
+        fs.appendFileSync('./user/error.log', error.toString().trim())
+    } else {
+        console.log(stdout);
+        console.log('execSync Success!');
+        fs.appendFileSync('./user/console.log', stdout.toString().trim())
+    }
+  })
+})
+
 let sleepMs = ipcMain.handle('sleep-ms', async (event, ms) => {
   return new Promise(resolve => setTimeout(resolve, ms))
 })
@@ -80,6 +94,6 @@ module.exports = {
   folderRead, folderMakeArg,
   openExternal,
   darkMode,
-  execHandle,
+  execHandle, execSyncHandle,
   sleepMs
 }

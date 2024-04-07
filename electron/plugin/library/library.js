@@ -152,7 +152,7 @@ function buttonNodeName() {
 
 function nodeNpmInstall() {
   const nodeName = document.getElementById('node-install-text').value
-  window.os.exec('npm install ./user/create/node/' + nodeName)
+  window.os.exec('npm install ./user/create/node/' + nodeName + ' --no-save')
 }
 
 function nodeNpmUninstall() {

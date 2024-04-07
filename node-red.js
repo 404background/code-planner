@@ -16,6 +16,11 @@ var settings = {
     httpAdminRoot:"/red",
     httpNodeRoot: "/api",
     userDir:"./.node-red/",
+    editorTheme: {
+        projects: {
+            enabled: true
+        }
+    },
     functionGlobalContext: { }    // グローバルコンテキストを有効化
 };
 

@@ -3,8 +3,8 @@ const nodeRedButton = {
   'start-node-red': [ 'StartNodeRED()', 'Start' ],
   'display-reload-node': [ 'DisplayNodeRED()', 'Editor' ],
   'display-node-ui': [ 'DisplayNodeUi()', 'UI Dashboard' ],
-  'display-node-split': [ 'DisplaySplit()', 'Split' ],
-  'node-red-list': [ 'NodeRedList()', 'list']
+  'display-node-split': [ 'DisplayNodeSplit()', 'Split' ],
+  'display-node-map': [ 'DisplayNodeMap()', 'Map' ],
 }
 
 function iconNode() {
@@ -50,7 +50,7 @@ function DisplayNodeUi() {
   nodeView.appendChild(webview)
 }
 
-function DisplaySplit() {
+function DisplayNodeSplit() {
   let splitView = document.createElement('div')
   splitView.setAttribute('id', 'node-split')
   let leftView = document.createElement('webview')
@@ -71,6 +71,11 @@ function DisplaySplit() {
   splitView.appendChild(rightView)
 }
 
-function NodeRedList() {
-  window.os.exec('start npm list')
+function DisplayNodeMap() {
+  let nodeView = document.getElementById('node-view')
+  nodeView.removeChild(nodeView.firstChild)
+  let webview = document.createElement('webview')
+  webview.setAttribute('id', 'node-red')
+  webview.setAttribute('src', 'http://localhost:8000/api/worldmap')
+  nodeView.appendChild(webview)
 }

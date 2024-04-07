@@ -1,11 +1,11 @@
 module.exports = function(RED) {
     function ${nodeNameFunction}(config) {
-        RED.nodes.createNode(this,config);
-        var node = this;
+        RED.nodes.createNode(this,config)
+        let node = this
         node.on('input', function(msg) {
-            ${function}
-            node.send(msg);
-        });
+${function}
+            node.send(msg)
+        })
     }
-    RED.nodes.registerType("${nodeName}",${nodeNameFunction});
+    RED.nodes.registerType("${nodeName}",${nodeNameFunction})
 }

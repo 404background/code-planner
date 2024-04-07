@@ -9,9 +9,9 @@
         outputs: ${nodeOutputs},
         icon: "${nodeIcon}",
         label: function() {
-            return this.name||"${nodeName}";
+            return this.name||"${nodeName}"
         }
-    });
+    })
 </script>
 
 <script type="text/html" data-template-name="${nodeName}">
@@ -22,4 +22,5 @@
 </script>
 
 <script type="text/html" data-help-name="${nodeName}">
+${help}
 </script>

@@ -18,18 +18,18 @@ function iconHome() {
     let commandLabel = document.createElement("label")
     commandLabel.setAttribute("for", 'inputCommand')
     commandLabel.innerHTML = 'Command:'
-    div2.appendChild(commandLabel)
+    div1.appendChild(commandLabel)
 
     let execInput = document.createElement("input")
     execInput.setAttribute("type", 'text')
     execInput.setAttribute("id", 'inputCommand')
-    div2.appendChild(execInput)
+    div1.appendChild(execInput)
 
     let execButton = document.createElement("button")
     execButton.setAttribute("class", 'exec-handle')
     execButton.setAttribute('onclick', 'buttonExec()')
     execButton.innerHTML = 'Execute'
-    div2.appendChild(execButton)
+    div1.appendChild(execButton)
 
     const commandResister = {
         "Node-RED": "npm run node-red",
@@ -44,12 +44,16 @@ function iconHome() {
         command.innerHTML = commandResister[i]
         commandList.appendChild(command)
     }
-    div2.appendChild(commandList)
+    div1.appendChild(commandList)
 
-    let audio = document.createElement("button")
-    audio.setAttribute('onclick', 'audio()')
-    audio.innerHTML = 'Audio'
-    div2.appendChild(audio)
+    let pluginListText = document.createElement('h2')
+    pluginListText.setAttribute('id', 'home-plugin-text')
+    pluginListText.innerHTML = 'Plugin List'
+    div2.appendChild(pluginListText)
+
+    let pluginList = document.createElement('ul')
+    pluginList.setAttribute('id', 'home-plugin-ul')
+    div2.appendChild(pluginList)
 
     let urlLabel = document.createElement("label")
     urlLabel.setAttribute("for", 'inputURL')
@@ -89,6 +93,8 @@ function iconHome() {
     webview.setAttribute('id', 'main-view')
     webview.setAttribute('src', 'https://github.com/404background/code-planner')
     div4.appendChild(webview)
+
+    homePluginName()
 }
 
 function buttonDarkMode() {
@@ -106,11 +112,6 @@ function urlListClick(element) {
     webview.setAttribute('src', element.innerHTML)
 }
 
-function openExternal() {
-    const url = document.getElementById('open-external').innerHTML
-    window.os.openExternal()
-}
-
 function buttonExec() {
     const command = document.getElementById('inputCommand').value
     window.os.exec(command)
@@ -120,8 +121,28 @@ function commandListClick(element) {
     window.os.exec(element.innerHTML)
 }
 
-function audio() {
-    audio = new Audio()
-    audio.src = "../user/create/voicevox/こんにちは.wav"
-    audio.play()
+function homePluginName() {
+    async function pluginName() {
+        const name = await window.os.folderRead('./electron/plugin')
+        return name
+    }
+
+    const ul = document.getElementById('home-plugin-ul')
+    while(ul.firstChild) {
+        ul.removeChild(ul.firstChild)
+    }
+
+    pluginName().then(result => {
+        for(i in result) {
+        let li = document.createElement('li')
+        li.setAttribute('onclick', 'pluginSetup(this)')
+        li.innerHTML = result[i]
+        ul.appendChild(li)
+        }
+    })
+}
+
+function pluginSetup(element) {
+    const command = 'start .\\windows\\' + element.innerHTML + '.bat'
+    window.os.exec(command)
 }

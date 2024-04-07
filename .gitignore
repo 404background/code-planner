@@ -6,11 +6,14 @@ python/test/
 user/create/
 moddable/
 Espressif/
-jupyter/
 .node-red/
 voicevox_core/
+.venv/
+pyenv/
+voicevox/create/
 
 # file
 package-lock.json
 .bash_history
 *.dll
+*.log
